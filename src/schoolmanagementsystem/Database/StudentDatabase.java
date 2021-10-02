@@ -61,6 +61,7 @@ public class StudentDatabase extends Accounts{
     final JPanel panel = new JPanel();
 
     ResultSet rs = null;
+    ResultSet rs2 = null;
     Statement st;
     
     
@@ -197,20 +198,32 @@ public class StudentDatabase extends Accounts{
     }
     
     public List<Message> getMessage(){
-//        String sql = "select * from message where ID=" + "\'" +getId()+ "\'";
+        
+        int len=getId().length();
+        int index = getId().indexOf(".");
+        String idString=getId().substring(index+1, len);
+        int intID = Integer.parseInt(idString);
+        
+        String sql = "SELECT * FROM Message INNER JOIN Teacher ON Message.TeacherID = Teacher.TeacherID and Message.StudentID="+intID+";";
 //       
-//        List<Message> list = new ArrayList<Message>();
-//        try {
-////            pst = conn.prepareStatement(sql);
-////            rs = pst.executeQuery();
-//            while (rs.next()) {
-//                Message messageId=new Message(rs.getString("teacher_name"),rs.getString("ID"),rs.getString("message"),rs.getString("date"),rs.getString("time"));
-//                list.add(messageId);
-//            }
-//            return list;
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, "Can't get message from database.","Warning",JOptionPane.WARNING_MESSAGE);
-//        }
+        List<Message> list = new ArrayList<Message>();
+        try {
+            rs = jConnection.getStatement().executeQuery(sql);
+            
+           while (rs.next()) {
+              //int a= rs.getInt("TeacherID");
+             // String sql2 = "SELECT Message.TeacherID, Teacher.TeacherName FROM Teacher INNER JOIN Message ON Message.TeacherID = Teacher.TeacherID and Message.TeacherID=" +a+"";
+               //rs2 = jConnection.getStatement().executeQuery(sql2);
+             int temp5 = rs.getInt("TeacherID");
+             String lala= String.valueOf(temp5);
+             Message messageId = new Message(lala,rs.getString("TeacherName"),rs.getString("MessageText"));
+              list.add(messageId);
+           }
+            return list;
+       } catch (SQLException e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Can't get message from database.","Warning",JOptionPane.WARNING_MESSAGE);
+      }
         return null;
     }
     public List<Attendance> getAttendance(String month){

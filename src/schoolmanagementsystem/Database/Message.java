@@ -9,30 +9,32 @@ public class Message {
     
     private String message;
     private String studentId;
+    private String teacherId;
     private String teacherName;
-    private String dateString;
-    private String timeString;
 
-    public String getDateString() {
-        return dateString;
-    }
-
-    public String getTimeString() {
-        return timeString;
-    }
+ 
     
 
     public Message() {
     }
-    public Message(String teacherName, String studentId,String message, String dateString, String timeString ) {
+    public Message(String teacherId,String message) {
         this.message = message;
-        this.studentId = studentId;
-        this.teacherName = teacherName;
-        this.dateString = dateString;
-        this.timeString = timeString;
+       
+        this.teacherId = teacherId;
+        
+    }
+    
+     public Message(String teacherName,String teacherId,String message) {
+         this.teacherName=teacherName;
+         this.message = message;
+   
+        this.teacherId = teacherId;
+        
     }
 
-    
+    public String getTeacherName() {
+        return teacherName; 
+    }
 
     public String getMessage() {
         return message;
@@ -42,8 +44,8 @@ public class Message {
         return studentId;
     }
 
-    public String getTeacherName() {
-        return teacherName; 
+    public String getTeacherId() {
+        return teacherId; 
     }
 
     public Object getStudentName() {

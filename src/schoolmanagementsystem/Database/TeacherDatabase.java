@@ -105,27 +105,32 @@ public class TeacherDatabase extends Accounts{
     
     public void sendMessage(String message,String studentId){
         
-//        Date datetime = new Date();
-//        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-//        DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
-//        String dateString=dateFormat.format(datetime);
-//        String timeString=timeFormat.format(datetime);
-//        String sql = "INSERT INTO message(teacher_name, ID, message,date, time) VALUES(?,?,?,?,?)";
-//        try {
-//            pst = conn.prepareStatement(sql);
-//     
-//            pst.setString(1, getTeacherName());
-//            pst.setString(2, studentId);
-//            
-//            pst.setString(3,message);
-//            pst.setString(4,dateString);
-//            pst.setString(5,timeString);
-//            pst.execute();
-//            
-//            JOptionPane.showMessageDialog(null, "Message have been sent Successfully");
-//        } catch (HeadlessException | SQLException e) {
-//            JOptionPane.showMessageDialog(panel, "Database error","Warning",JOptionPane.WARNING_MESSAGE);
-//        }
+        int len=studentId.length();
+        int index = studentId.indexOf(".");
+        String idString=studentId.substring(index+1, len);
+        int intID = Integer.parseInt(idString);
+        
+        int len2=id.length();
+        int index2 = id.indexOf(".");
+        String idString2=id.substring(index2+1, len2);
+        int intID2 = Integer.parseInt(idString2);
+        
+       String sql = "INSERT INTO Message(StudentID,TeacherID,MessageText) "
+               + "VALUES ("+intID+","+intID2+",'"+message+"');";
+      
+              
+               // 
+               
+        try {
+            jConnection.getStatement().executeUpdate(sql);
+    
+           
+          
+           JOptionPane.showMessageDialog(null, "Message have been sent Successfully");
+       } catch (HeadlessException | SQLException e) {
+            System.out.println(e);   
+           JOptionPane.showMessageDialog(panel, "Database error","Warning",JOptionPane.WARNING_MESSAGE);
+       }
     }
     
     public void attendanceUpdate(String month,String studentId, int workingDays, int presentDays){

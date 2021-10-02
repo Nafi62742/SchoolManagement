@@ -66,7 +66,7 @@ public class StudentProfile extends javax.swing.JFrame {
 //        int intID = Integer.parseInt(idString);
         stdb=new StudentDatabase(id);
         
-//       showMessage();
+       showMessage();
 //        
 //        showNoticeBoard();
 //        getHomeworks();
@@ -1582,14 +1582,14 @@ public class StudentProfile extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Teacher Name", "Message", "Date", "Time"
+                "Teacher Name", "Message"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1603,9 +1603,6 @@ public class StudentProfile extends javax.swing.JFrame {
         messageTable.setRowHeight(30);
         jScrollPaneMessage.setViewportView(messageTable);
         if (messageTable.getColumnModel().getColumnCount() > 0) {
-            messageTable.getColumnModel().getColumn(0).setMinWidth(0);
-            messageTable.getColumnModel().getColumn(0).setPreferredWidth(300);
-            messageTable.getColumnModel().getColumn(0).setMaxWidth(200);
             messageTable.getColumnModel().getColumn(1).setPreferredWidth(450);
         }
 
@@ -1763,25 +1760,20 @@ public class StudentProfile extends javax.swing.JFrame {
     
     public void showMessage(){
         
-//        DefaultTableModel dtm2 = (DefaultTableModel) messageTable.getModel();
-//        
-//        List<Message> list=stdb.getMessage();
-//        Object[] row2=new Object[4];
-//        for(int i=list.size()-1;i>=0;i--){
-//            
-//            row2[0]=list.get(i).getTeacherName();            
-//            row2[1]=list.get(i).getMessage();
-//            row2[2]=list.get(i).getDateString();
-//            row2[3]=list.get(i).getTimeString();
-//            int notifier =checkDate(list.get(i).getDateString());
-//            if(notifier==1){
-//                dateNotificationToggle= 3;
-//                messageNotificationCheck=1;
-//            }
-//            
-//            dtm2.addRow(row2);
-//            
-//        }
+        DefaultTableModel dtm2 = (DefaultTableModel) messageTable.getModel();
+        
+      List<Message> list=stdb.getMessage();
+       Object[] row2=new Object[4];
+        for(int i=list.size()-1;i>=0;i--){
+           
+           row2[0]=list.get(i).getTeacherId();
+           //row2[0]=list.get(i).getTeacherName();
+            row2[1]=list.get(i).getMessage();
+           
+           
+           dtm2.addRow(row2);
+           
+       }
     }
     public void showAttendance(String Month) {
 //        List<Attendance> list = stdb.getAttendance(Month);
