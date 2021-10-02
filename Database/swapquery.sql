@@ -1,6 +1,6 @@
 create database SchoolManagement
 
-
+Drop database SchoolManagement
 create table Test
 (
 ID int  PRIMARY KEY,
@@ -25,13 +25,10 @@ Fee int NULL
 
 
 INSERT INTO Student(StudentID,StudentName,StudentAddress,StudentEmail,Class,Section,StudentPassword)
-VALUES (3,'Rahim', 'Hudai', 'a@gmail.com',10,'B','MTIzNDU=');
+VALUES (3,'Rahim', 'Hudai', 'a@gmail.com',10,'B','1234');
     
 select * from Student where StudentID=1and StudentPassword= 123;
 
-UPDATE Student 
-	SET StudentPassword='MTIzNDU=',StudentName ='Aziz', StudentAddress='Mirpur' , StudentEmail='aziz@gmail.com',  Class=6 ,Section='A'
-	where StudentID=3
 
 select * From Student
 
@@ -53,14 +50,6 @@ VALUES (3,'Rahim', 'Hudai', 'a@gmail.com',10,'B','1234');
     
 select * from Teacher where TeacherID=1and TeacherPassword= 123;
 
-UPDATE Teacher 
-	SET TeacherPassword='MTIzNDU=',
-		TeacherName ='Aziz',
-		TeacherAddress='Mirpur' ,
-		TeacherEmail='aziz@gmail.com', 
-		Designation='6' ,
-		SubjectName='A'
-	where TeacherID=3
 
 select * From Teacher
 
@@ -89,21 +78,47 @@ create table Attendance(
 create table Class(
 	Class int primary key NOT NULL,
 	TeacherID int foreign key REFERENCES Teacher (TeacherID),
-	Section varchar(1) not Null,
+	Section int  NOT NULL CHECK (Section <= 3),
 	StudentID int foreign key REFERENCES Student (StudentID)
 );
-
 create table Subject(
 	SubjectID int primary key NOT NULL,
 	Class int foreign key REFERENCES Class (Class),
 	TeacherID int foreign key REFERENCES Teacher (TeacherID),
 	SubjectName varchar(50) NOT NUll
 );
-Drop Table Subject
+
 --create table Section(
 --	Section int primary key NOT NULL CHECK (Section <= 3),
 --	Class int foreign key REFERENCES Class (Class)
 --);
+
+INSERT INTO Student(StudentID,StudentName,StudentAddress,StudentEmail,Class,Section,StudentPassword)
+VALUES (3,'Rahim', 'Hudai', 'a@gmail.com',10,'B','1234');
+    
+select * from Student where StudentID=1and StudentPassword= 123;
+
+select * from Student where StudentID=26 or StudentPassword= '';
+
+select * from Student where StudentID='' or Section='C';
+
+
+select * From Student
+
+select * From Teacher
+
+
+SELECT StudentID,StudentName,StudentEmail,Class,Section FROM Student
+
+Drop Table Student
+
+select * From Message
+
+SELECT *
+FROM Message
+INNER JOIN Teacher
+ON Message.TeacherID = Teacher.TeacherID and Message.StudentID=26
+
 
 create table Notice(
 	Datee varchar(20),
@@ -113,27 +128,7 @@ create table Notice(
 
 );
 
-
-INSERT INTO Student(StudentID,StudentName,StudentAddress,StudentEmail,Class,Section,StudentPassword)
-VALUES (3,'Rahim', 'Hudai', 'a@gmail.com',10,'B','1234');
-    
-select * from Student where StudentID=1and StudentPassword= 123;
-
-
-select * From Student
-
-Drop Table Student
-
-INSERT INTO Class(Class,TeacherID,Section,StudentID)
-VALUES(7,17,'a',26);
-
-INSERT INTO Notice(Datee,TeacherID, Class, Notice)
-VALUES('3.10.2021',17,7,'asd asd adasda ffhhj jhkh ');
-
-
-select * From Notice
-select * from Notice where Class=7
-Drop Table Notice
-
-
-
+SELECT *
+FROM Notice
+INNER JOIN Teacher
+ON Notice.TeacherID = Teacher.TeacherID and Notice.Class=7

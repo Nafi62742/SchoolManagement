@@ -6,7 +6,10 @@ import java.awt.HeadlessException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -80,27 +83,35 @@ public class TeacherDatabase extends Accounts{
         
     }
     public void postNotice(String studentClass,String notice){
-//        Date datetime = new Date();
-//        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-//        DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
-//        String dateString=dateFormat.format(datetime);
-//        String timeString=timeFormat.format(datetime);
-//        
-//        String sql = "INSERT INTO notice_board(date, time, teacher_name, class, subject, notice) VALUES(?,?,?,?,?,?)";
-//        try {
-//            pst = conn.prepareStatement(sql);
-//            pst.setString(1, dateString);
-//            pst.setString(2, timeString);
-//            pst.setString(3, getTeacherName());
-//            pst.setString(4, studentClass);
-//            pst.setString(5, getTeacherSubject());
-//            pst.setString(6,notice);
-//            pst.execute();
-//            
-//            JOptionPane.showMessageDialog(null, "Notice have been posted Successfully");
-//        } catch (HeadlessException | SQLException e) {
-//            JOptionPane.showMessageDialog(panel, "Database error","Warning",JOptionPane.WARNING_MESSAGE);
-//        }
+        Date datetime = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+       // DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
+        String dateString=dateFormat.format(datetime);
+      // String timeString=timeFormat.format(datetime);
+        int len2=id.length();
+        int index2 = id.indexOf(".");
+        String idString2=id.substring(index2+1, len2);
+        int intID2 = Integer.parseInt(idString2);
+        
+        int len=studentClass.length();
+        int index = studentClass.indexOf(".");
+        String idString=studentClass.substring(index+1, len);
+        int intCls = Integer.parseInt(idString);
+        
+        
+        
+       String sql = "INSERT INTO Notice(Datee,TeacherID,Class,Notice)"
+               +"VALUES("+dateString+","+intID2+","+intCls+",'"+notice+"');";
+       try {
+            jConnection.getStatement().executeUpdate(sql);
+            
+            
+
+            JOptionPane.showMessageDialog(null, "Notice have been posted Successfully");
+       } catch (HeadlessException | SQLException e) {
+           System.out.println(e);
+           JOptionPane.showMessageDialog(panel, "Database error","Warning",JOptionPane.WARNING_MESSAGE);
+       }
     } 
     
     public void sendMessage(String message,String studentId){

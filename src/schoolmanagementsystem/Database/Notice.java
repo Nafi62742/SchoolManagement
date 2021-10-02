@@ -11,8 +11,9 @@ package schoolmanagementsystem.Database;
 public class Notice {
     private String dateString;
     private String timeString;
+    private int teacherID;
+    private int studentClass;
     private String teacherName;
-    private String studentClass;
     private String subject;
     private String notice;
     public Notice() {
@@ -26,29 +27,40 @@ public class Notice {
         return timeString;
     }
     
-    public Notice(String date, String time, String teacherName, String studentClass, String subject, String notice) {
+    public Notice(String date, String time, int teacherName, int studentClass, String subject, String notice) {
         this.dateString = date;
         this.timeString = time;
-        this.teacherName = teacherName;
+        this.teacherID = teacherName;
         this.studentClass = studentClass;
         this.subject = subject;
         this.notice = notice;
     }
     
+    public Notice(String date, int teacherID,String teacherName, int studentClass,String notice) {
+        this.dateString = date;
+        this.teacherName= teacherName;
+        this.teacherID = teacherID;
+        this.studentClass = studentClass;
+      
+        this.notice = notice;
+    }
     public String getSubject(){
         return this.subject;
     }
     
-    public String getTeacherName() {
-        return teacherName;
+    public int getTeacherID() {
+        return teacherID;
     }
     
-    public String getStudentClass() {
+    public int getStudentClass() {
         return studentClass;
     }
     
     public String getNotice() {
         return notice;
+    }
+    public String getTeacherName() {
+        return teacherName;
     }
     
 }

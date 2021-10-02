@@ -107,19 +107,25 @@ public class StudentDatabase extends Accounts{
         }
     }*/
     public List<Notice> getNotice(){
-//        String sql = "select * from notice_board where class=" + "\'" +getStudentClass()+ "\'";
-//        List<Notice> list = new ArrayList<Notice>();
-//        try {
-////            pst = conn.prepareStatement(sql);
-////            rs = pst.executeQuery();
-//            while (rs.next()) {
-//                Notice noticeClass=new Notice(rs.getString("date"),rs.getString("time"),rs.getString("teacher_name"),rs.getString("class"),rs.getString("subject"),rs.getString("notice"));
-//                list.add(noticeClass);
-//            }
-//            return list;
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, "Can't get notice from database.");
-//        }
+         int len=getStudentClass().length();
+        int index = getStudentClass().indexOf(".");
+        String idString=getStudentClass().substring(index+1, len);
+        int intCls = Integer.parseInt(idString);
+       String sql = "SELECT * FROM Notice INNER JOIN Teacher ON Notice.TeacherID = Teacher.TeacherID and Notice.Class="+intCls+";"; 
+       //String sql = "select * from Notice where Class="+intCls+";";
+       List<Notice> list = new ArrayList<Notice>();
+        try {
+            rs = jConnection.getStatement().executeQuery(sql);
+         
+            while (rs.next()) {
+               Notice noticeClass = new Notice(rs.getString("Datee"),rs.getInt("TeacherID"),rs.getString("TeacherName"),rs.getInt("Class"),rs.getString("Notice"));
+                list.add(noticeClass);
+            }
+            return list;
+       } catch (SQLException e) {
+            System.out.println(e);
+           JOptionPane.showMessageDialog(null, "Can't get notice from database.");
+        }
         return null;
     }
     

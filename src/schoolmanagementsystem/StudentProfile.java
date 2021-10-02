@@ -68,7 +68,7 @@ public class StudentProfile extends javax.swing.JFrame {
         
        showMessage();
 //        
-//        showNoticeBoard();
+        showNoticeBoard();
 //        getHomeworks();
 //        
 //        hideSideMenu();
@@ -1175,14 +1175,14 @@ public class StudentProfile extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Date", "Time", "Teacher Name", "Subject", "Notice"
+                "Date", "Teacher Name", "Notice", "TeacherNmae"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1198,12 +1198,8 @@ public class StudentProfile extends javax.swing.JFrame {
         if (noticeBoardTable.getColumnModel().getColumnCount() > 0) {
             noticeBoardTable.getColumnModel().getColumn(0).setMinWidth(100);
             noticeBoardTable.getColumnModel().getColumn(0).setMaxWidth(100);
-            noticeBoardTable.getColumnModel().getColumn(1).setMinWidth(100);
-            noticeBoardTable.getColumnModel().getColumn(1).setMaxWidth(100);
-            noticeBoardTable.getColumnModel().getColumn(2).setMinWidth(150);
-            noticeBoardTable.getColumnModel().getColumn(2).setMaxWidth(250);
-            noticeBoardTable.getColumnModel().getColumn(3).setMinWidth(100);
-            noticeBoardTable.getColumnModel().getColumn(3).setMaxWidth(200);
+            noticeBoardTable.getColumnModel().getColumn(1).setMinWidth(150);
+            noticeBoardTable.getColumnModel().getColumn(1).setMaxWidth(250);
         }
 
         javax.swing.GroupLayout myNoticePanelLayout = new javax.swing.GroupLayout(myNoticePanel);
@@ -1739,23 +1735,24 @@ public class StudentProfile extends javax.swing.JFrame {
     
     public void showNoticeBoard(){
         
-//        DefaultTableModel dtm = (DefaultTableModel) noticeBoardTable.getModel();
-//        
-//        List<Notice> list=stdb.getNotice();
-//        Object[] row=new Object[5];
-//        for(int i=list.size()-1;i>=0;i--){
-//            row[0]=list.get(i).getDateString();
+        DefaultTableModel dtm = (DefaultTableModel) noticeBoardTable.getModel();
+        
+        List<Notice> list=stdb.getNotice();
+        Object[] row=new Object[5];
+        for(int i=list.size()-1;i>=0;i--){
+            row[0]=list.get(i).getDateString();
 //            int notifier =checkDate(list.get(i).getDateString());
 //            if(notifier==1&&dateNotificationToggle!=1){
 //                dateNotificationToggle= 2;
 //                noticeNotificationCheck=1;
 //            }
-//            row[1]=list.get(i).getTimeString();
-//            row[2]=list.get(i).getTeacherName();
-//            row[3]=list.get(i).getSubject();
-//            row[4]=list.get(i).getNotice();
-//            dtm.addRow(row);
-//        }
+            
+            row[1]=list.get(i).getTeacherID();
+            row[2]=list.get(i).getNotice();
+            row[3]=list.get(i).getTeacherName();
+            
+            dtm.addRow(row);
+        }
     }
     
     public void showMessage(){
