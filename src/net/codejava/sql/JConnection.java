@@ -10,7 +10,7 @@ public class JConnection {
     Statement statement;
 
     public JConnection() {
-    String url = "jdbc:sqlserver://SWAP\\SQLEXPRESS:1433;databaseName=";
+    String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=";
     String dbName="SchoolManagement";
     String user = "sa";
     String password = "Ghum1234";

@@ -27,6 +27,7 @@ import schoolmanagementsystem.Database.Attendance;
 import schoolmanagementsystem.Database.Homework;
 import schoolmanagementsystem.Database.Message;
 import schoolmanagementsystem.Database.Notice;
+import schoolmanagementsystem.Database.Results;
 import schoolmanagementsystem.Database.StudentDatabase;
 
 /**
@@ -65,15 +66,14 @@ public class StudentProfile extends javax.swing.JFrame {
 //        String idString=id.substring(index+1, len);
 //        int intID = Integer.parseInt(idString);
         stdb=new StudentDatabase(id);
-        
-       showMessage();
-//        
+
+        showMessage();
         showNoticeBoard();
 //        getHomeworks();
 //        
-//        hideSideMenu();
+        hideSideMenu();
         profileShow();
-//        resultShow();
+        resultShow();
 //      
 //        notifierButtonUse();
     }
@@ -1741,12 +1741,6 @@ public class StudentProfile extends javax.swing.JFrame {
         Object[] row=new Object[5];
         for(int i=list.size()-1;i>=0;i--){
             row[0]=list.get(i).getDateString();
-//            int notifier =checkDate(list.get(i).getDateString());
-//            if(notifier==1&&dateNotificationToggle!=1){
-//                dateNotificationToggle= 2;
-//                noticeNotificationCheck=1;
-//            }
-            
             row[1]=list.get(i).getTeacherID();
             row[2]=list.get(i).getNotice();
             row[3]=list.get(i).getTeacherName();
@@ -1837,17 +1831,17 @@ public class StudentProfile extends javax.swing.JFrame {
     }
     
     public void resultComplements(int total){
-//                            int finalMarks=stdb.getGrandTotal();
-//                             String b1= Integer.toString(stdb.getBangla1st());
-//                             String b2= Integer.toString(stdb.getBangla2nd());
-//                             String e1 = Integer.toString(stdb.getEnglish1st());
-//                             String e2=Integer.toString(stdb.getEnglish2nd());
-//                             String m=Integer.toString(stdb.getMath());
-//                             String r=Integer.toString(stdb.getReligion());
-//                             String s=Integer.toString(stdb.getScience());
-//                             String ic=Integer.toString(stdb.getIct());
-//                             String bgs=Integer.toString(stdb.getBgs());
-//                             int percentage=(finalMarks*100)/total;
+//            int finalMarks=stdb.getGrandTotal();
+//             String b1= Integer.toString(stdb.getBangla1st());
+//             String b2= Integer.toString(stdb.getBangla2nd());
+//             String e1 = Integer.toString(stdb.getEnglish1st());
+//             String e2=Integer.toString(stdb.getEnglish2nd());
+//             String m=Integer.toString(stdb.getMath());
+//             String r=Integer.toString(stdb.getReligion());
+//             String s=Integer.toString(stdb.getScience());
+//             String ic=Integer.toString(stdb.getIct());
+//             String bgs=Integer.toString(stdb.getBgs());
+//             int percentage=(finalMarks*100)/total;
 //               if(b1.equals("0") ||b2.equals("0")|| e1.equals("0") ||e2.equals("0") || m.equals("0") || r.equals("0") || s.equals("0") || ic.equals("0") || bgs.equals("0")){
 //                      complements.setText("");
 //               }
@@ -1863,221 +1857,233 @@ public class StudentProfile extends javax.swing.JFrame {
     }
     
     public void resultPageClear(){
-//                   bangla1st.setText("");
-//                   bangla2nd.setText("");
-//                   english1st.setText("");
-//                   english2nd.setText("");
-//                   math.setText("");
-//                   religion.setText("");
-//                   science.setText("");
-//                   ICT.setText("");
-//                   BGS.setText("");
-//                   totalMarks.setText("");
-//                   
-//                   BanglaText.setText("");
-//                   b1st.setText("");
-//                   bangla2ndText.setText("");
-//                   
-//                   EnglishText.setText("");
-//                   e1st.setText("");
-//                   English2ndText.setText("");
-//                   
-//                   MathText.setText("");
-//                   ScienceText.setText("");
-//                   ICTText.setText("");
-//                   BGSText.setText("");
-//                   religionText.setText("");
-//                   TotalText.setText("");
-//                   ColonLebel.setText("");
-//
-//                   ColonLebel1.setText("");
-//                   ColonLebel2.setText("");
-//                   ColonLebel3.setText("");
-//                   ColonLebel4.setText("");
-//                   ColonLebel5.setText("");
-//                   ColonLebel6.setText("");
-//                   ColonLebel7.setText("");
-//                   ColonLebel8.setText("");
-//                   ColonLebel9.setText("");
+                   bangla1st.setText("");
+                   bangla2nd.setText("");
+                   english1st.setText("");
+                   english2nd.setText("");
+                   math.setText("");
+                   religion.setText("");
+                   science.setText("");
+                   ICT.setText("");
+                   BGS.setText("");
+                   totalMarks.setText("");
+                   
+                   BanglaText.setText("");
+                   b1st.setText("");
+                   bangla2ndText.setText("");
+                   
+                   EnglishText.setText("");
+                   e1st.setText("");
+                   English2ndText.setText("");
+                   
+                   MathText.setText("");
+                   ScienceText.setText("");
+                   ICTText.setText("");
+                   BGSText.setText("");
+                   religionText.setText("");
+                   TotalText.setText("");
+                   ColonLebel.setText("");
+
+                   ColonLebel1.setText("");
+                   ColonLebel2.setText("");
+                   ColonLebel3.setText("");
+                   ColonLebel4.setText("");
+                   ColonLebel5.setText("");
+                   ColonLebel6.setText("");
+                   ColonLebel7.setText("");
+                   ColonLebel8.setText("");
+                   ColonLebel9.setText("");
  }   
 
 public void resultShow(){
-//        
+        
 //            String student_id =this.id;
+            List<Results> list=stdb.getResult();
+            Object[] row=new Object[5];
+            for(int i=list.size()-1;i>=0;i--){
+//                System.out.println(list.get(i).getBangla1st()+1);
+                String b1= Integer.toString(list.get(i).getBangla1st());
+//            row[1]=list.get(i).getTeacherID();
+//            row[2]=list.get(i).getNotice();
+//            row[3]=list.get(i).getTeacherName();
+            
+          
+        
 //            String finalMarks=Integer.toString(stdb.getGrandTotal());
 //            String b1= Integer.toString(stdb.getBangla1st());
-//            String b2= Integer.toString(stdb.getBangla2nd());
-//            String e1 = Integer.toString(stdb.getEnglish1st());
-//            String e2=Integer.toString(stdb.getEnglish2nd());
-//            String m=Integer.toString(stdb.getMath());
-//            String r=Integer.toString(stdb.getReligion());
-//            String s=Integer.toString(stdb.getScience());
-//            String ic=Integer.toString(stdb.getIct());
-//            String bgs=Integer.toString(stdb.getBgs());
-//            int resultClass=Integer.parseInt(stdb.getStudentClass());
-//            if(b1.equals("0") &&b2.equals("0")&& e1.equals("0") && e2.equals("0") && m.equals("0") && r.equals("0") && s.equals("0") && ic.equals("0") && bgs.equals("0")){
-//               noResult.setText("No result published yet");
-//                resultPageClear();
-//            }
-//            else if(resultClass>5&&resultClass<11){
-//                      if(b1 .equals("0")){
-//                          bangla1st.setText("-/100");
-//                      }
-//                      else{
-//                          bangla1st.setText(b1+"/100");
-//                      }
-//                      if(b2.equals("0")){
-//                         bangla2nd.setText("-/50");
-//                      }
-//                      else{
-//                          bangla2nd.setText(b2+"/50");
-//                      }
-//                       if(e1 .equals("0")){
-//                          english1st.setText("-/100");
-//                      }
-//                      else{
-//                         english1st.setText(e1+"/100");
-//                      }
-//                        if(e2 .equals("0")){
-//                         english2nd.setText("-/50");
-//                      }
-//                      else{
-//                          english2nd.setText(e2+"/50");
-//                      }
-//                       if(m .equals("0")){
-//                          math.setText("-/100");
-//                      }
-//                      else{
-//                         math.setText(m+"/100");
-//                      }
-//
-//                      if(r.equals("0")){
-//                          religion.setText("-/100");
-//                      }
-//                      else{
-//                         religion.setText(r+"/100");
-//                      }
-//                      if(s.equals("0")){
-//                          science.setText("-/100");
-//                      }
-//                      else{
-//                         science.setText(s+"/100");
-//                      }
-//
-//                      if(ic.equals("0")){
-//                          ICT.setText("-/100");
-//                      }
-//                      else{
-//                         ICT.setText(ic+"/100");
-//                      }
-//                      if(bgs.equals("0")){
-//                          BGS.setText("-/100");
-//                      }
-//                      else{
-//                         BGS.setText(bgs+"/100");
-//                      }
+            String b2= Integer.toString(list.get(i).getBangla2nd());
+            String e1 = Integer.toString(list.get(i).getEnglish1st());
+            String e2=Integer.toString(list.get(i).getEnglish2nd());
+            String m=Integer.toString(list.get(i).getMath());
+            String r=Integer.toString(list.get(i).getReligion());
+            String s=Integer.toString(list.get(i).getScience());
+            String ic=Integer.toString(stdb.getIct());
+            String bgs=Integer.toString(stdb.getBgs());
+            int resultClass=Integer.parseInt(stdb.getStudentClass());
+            if(b1.equals("0") &&b2.equals("0")&& e1.equals("0") && e2.equals("0") && m.equals("0") && r.equals("0") && s.equals("0") && ic.equals("0") && bgs.equals("0")){
+               noResult.setText("No result published yet");
+                resultPageClear();
+            }
+            else if(resultClass>5&&resultClass<11){
+                      if(b1 .equals("0")){
+                          bangla1st.setText("-/100");
+                      }
+                      else{
+                          bangla1st.setText(b1+"/100");
+                      }
+                      if(b2.equals("0")){
+                         bangla2nd.setText("-/50");
+                      }
+                      else{
+                          bangla2nd.setText(b2+"/50");
+                      }
+                       if(e1 .equals("0")){
+                          english1st.setText("-/100");
+                      }
+                      else{
+                         english1st.setText(e1+"/100");
+                      }
+                        if(e2 .equals("0")){
+                         english2nd.setText("-/50");
+                      }
+                      else{
+                          english2nd.setText(e2+"/50");
+                      }
+                       if(m .equals("0")){
+                          math.setText("-/100");
+                      }
+                      else{
+                         math.setText(m+"/100");
+                      }
+
+                      if(r.equals("0")){
+                          religion.setText("-/100");
+                      }
+                      else{
+                         religion.setText(r+"/100");
+                      }
+                      if(s.equals("0")){
+                          science.setText("-/100");
+                      }
+                      else{
+                         science.setText(s+"/100");
+                      }
+
+                      if(ic.equals("0")){
+                          ICT.setText("-/100");
+                      }
+                      else{
+                         ICT.setText(ic+"/100");
+                      }
+                      if(bgs.equals("0")){
+                          BGS.setText("-/100");
+                      }
+                      else{
+                         BGS.setText(bgs+"/100");
+                      }
 //                      totalMarks.setText(finalMarks+"/800");
 //                       resultComplements(800);
-//            }
-//            else if(resultClass>3&&resultClass<6){
-//                        if(b1.equals("0")){
-//                          bangla1st.setText("-/100");
-//                      }
-//                      else{
-//                          bangla1st.setText(b1);
-//                      }
-//                      if(b2.equals("0")){
-//                         bangla2nd.setText("");
-//                         bangla2ndText.setText("");
-//                         b1st.setText("");
-//                      }
-//                      else{
-//                          bangla2nd.setText(b2);
-//                      }
-//                       if(e1.equals("0")){
-//                          english1st.setText("");
-//                      }
-//                      else{
-//                         english1st.setText(e1);
-//                      }
-//                        if(e2.equals("0")){
-//                         english2nd.setText("");
-//                         English2ndText.setText("");
-//                         e1st.setText("");
-//                      }
-//                      else{
-//                          bangla2nd.setText(e2+"/100");
-//                      }
-//                       if(m.equals("0")){
-//                          math.setText("");
-//                      }
-//                      else{
-//                         math.setText(m+"/100");
-//                      }
-//
-//                      if(r.equals("0")){
-//                          religion.setText("");
-//                      }
-//                      else{
-//                         religion.setText(r);
-//                      }
-//                      if(bgs.equals("0")){
-//                          BGS.setText("");
-//                      }
-//                      else{
-//                         BGS.setText(r);
-//                      }
-//                      ColonLebel8.setText("");
-//                      ColonLebel9.setText("");
-//                      ICTText.setText("");
-//                      ICT.setText("");
+            }
+            else if(resultClass>3&&resultClass<6){
+                        if(b1.equals("0")){
+                          bangla1st.setText("-/100");
+                      }
+                      else{
+                          bangla1st.setText(b1);
+                      }
+                      if(b2.equals("0")){
+                         bangla2nd.setText("");
+                         bangla2ndText.setText("");
+                         b1st.setText("");
+                      }
+                      else{
+                          bangla2nd.setText(b2);
+                      }
+                       if(e1.equals("0")){
+                          english1st.setText("");
+                      }
+                      else{
+                         english1st.setText(e1);
+                      }
+                        if(e2.equals("0")){
+                         english2nd.setText("");
+                         English2ndText.setText("");
+                         e1st.setText("");
+                      }
+                      else{
+                          bangla2nd.setText(e2+"/100");
+                      }
+                       if(m.equals("0")){
+                          math.setText("");
+                      }
+                      else{
+                         math.setText(m+"/100");
+                      }
+
+                      if(r.equals("0")){
+                          religion.setText("");
+                      }
+                      else{
+                         religion.setText(r);
+                      }
+                      if(bgs.equals("0")){
+                          BGS.setText("");
+                      }
+                      else{
+                         BGS.setText(r);
+                      }
+                      ColonLebel8.setText("");
+                      ColonLebel9.setText("");
+                      ICTText.setText("");
+                      ICT.setText("");
 //                      totalMarks.setText(finalMarks+"/600");
 //                      resultComplements(600);
-//           }
-//           else if(resultClass>0&&resultClass<4){
-//                      if(b1.equals("0")){
-//                          bangla1st.setText("-/100");
-//                      }
-//                      else{
-//                          bangla1st.setText(b1);
-//                      }
-//                    bangla2nd.setText("");
-//                    bangla2ndText.setText("");
-//                    b1st.setText("");
-//                       if(e1.equals("0")){
-//                          english1st.setText("");
-//                      }
-//                      else{
-//                         english1st.setText(e1);
-//                      }
-//                    english2nd.setText("");
-//                    English2ndText.setText("");
-//                    e1st.setText("");
-//                       if(m.equals("0")){
-//                          math.setText("");
-//                      }
-//                      else{
-//                         math.setText(m+"/100");
-//                      }
-//
-//                      if(r.equals("0")){
-//                          religion.setText("");
-//                      }
-//                      else{
-//                         religion.setText(r);
-//                      }
-//                      ICTText.setText("");
-//                      ICT.setText("");
-//                      BGSText.setText("");
-//                      BGS.setText("");
-//                      ColonLebel8.setText("");
-//                      ColonLebel9.setText("");
+           }
+           else if(resultClass>0&&resultClass<4){
+                      if(b1.equals("0")){
+                          bangla1st.setText("-/100");
+                      }
+                      else{
+                          bangla1st.setText(b1);
+                      }
+                    bangla2nd.setText("");
+                    bangla2ndText.setText("");
+                    b1st.setText("");
+                       if(e1.equals("0")){
+                          english1st.setText("");
+                      }
+                      else{
+                         english1st.setText(e1);
+                      }
+                    english2nd.setText("");
+                    English2ndText.setText("");
+                    e1st.setText("");
+                       if(m.equals("0")){
+                          math.setText("");
+                      }
+                      else{
+                         math.setText(m+"/100");
+                      }
+
+                      if(r.equals("0")){
+                          religion.setText("");
+                      }
+                      else{
+                         religion.setText(r);
+                      }
+                      ICTText.setText("");
+                      ICT.setText("");
+                      BGSText.setText("");
+                      BGS.setText("");
+                      ColonLebel8.setText("");
+                      ColonLebel9.setText("");
 //                      totalMarks.setText(finalMarks+"/500");
 //                      resultComplements(500);
-//           }
-//           else{
-//                
-//           }
+           }
+           else{
+                
+           }
+        }
     }
         
     

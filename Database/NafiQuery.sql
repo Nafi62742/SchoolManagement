@@ -136,4 +136,33 @@ select * from Notice where Class=7
 Drop Table Notice
 
 
+Create Table Message(
+    StudentID int foreign key REFERENCES Student (StudentID),
+    TeacherID int foreign key REFERENCES Teacher (TeacherID),
+    MessageText varchar(1000) not null
 
+);
+Create Table Result(
+    StudentID int foreign key REFERENCES Student(StudentID),
+    bangla1st int null,
+	bangla2nd int null,
+	english1st int null,
+	english2nd int null,
+	math int null,
+	science int null,
+	religion int null,
+	bgs int null,
+	ict int null
+);
+INSERT INTO Result(StudentID,bangla1st)
+VALUES (1,50);
+
+
+update Result set bangla1st = 100 where StudentID = 1;
+
+
+select * From Result Where StudentID = 1;
+
+INSERT INTO Result(StudentID,bangla1st)
+VALUES (3,2);
+-- drop table Result

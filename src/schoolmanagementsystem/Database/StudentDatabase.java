@@ -80,6 +80,7 @@ public class StudentDatabase extends Accounts{
     }
     //Constructor (Polymorphism - Method Overloading)
     public StudentDatabase(String id){
+        System.out.println(id);
 //        conn=JConnection.connectdb();
         setId(id);
         
@@ -89,23 +90,10 @@ public class StudentDatabase extends Accounts{
         int intId = Integer.parseInt(idString);
         
         getStudentData(intId);
-//        getResult(id);
-//        totalMarks();
-    }
-        /*public void resultfieldForStu(String id){
-        final JPanel panel = new JPanel();
-        
-       String sql = "INSERT INTO results(ID) VALUES (?)";
-        try {
-            pst = conn.prepareStatement(sql);
-            pst.setString(1, id);
-            pst.execute();
+        getResult();
 
-            //JOptionPane.showMessageDialog(null, "Marks(english2nd) have been added Successfully");
-        } catch (HeadlessException | SQLException e) {
-            JOptionPane.showMessageDialog(panel, "Database error","Warning",JOptionPane.WARNING_MESSAGE);
-        }
-    }*/
+    }
+
     public List<Notice> getNotice(){
          int len=getStudentClass().length();
         int index = getStudentClass().indexOf(".");
@@ -130,21 +118,19 @@ public class StudentDatabase extends Accounts{
     }
     
     public void stuList(String Class ,String Section ,String StudentId ,String StudentName){
-        
          sListClass = Class;
          sListSection =  Section;
          sListStudentID = StudentId;
          sListStudentname = StudentName;
-        
     }
     
     
      public List<studentList> getStudentList(){
         
-         int len=getId().length();
-        int index = id.indexOf(".");
-        String idString=id.substring(index+1, len);
-        int intID = Integer.parseInt(idString);
+//         int len=getId().length();
+//        int index = id.indexOf(".");
+//        String idString=id.substring(index+1, len);
+//        int intID = Integer.parseInt(idString);
     //String sql = "select * from Student where StudentID="  +intID+ ";";
     String sql = "select * from Student where Class ='' or Section='B';";
         List<studentList> list = new ArrayList<studentList>();
@@ -215,15 +201,11 @@ public class StudentDatabase extends Accounts{
         List<Message> list = new ArrayList<Message>();
         try {
             rs = jConnection.getStatement().executeQuery(sql);
-            
            while (rs.next()) {
-              //int a= rs.getInt("TeacherID");
-             // String sql2 = "SELECT Message.TeacherID, Teacher.TeacherName FROM Teacher INNER JOIN Message ON Message.TeacherID = Teacher.TeacherID and Message.TeacherID=" +a+"";
-               //rs2 = jConnection.getStatement().executeQuery(sql2);
              int temp5 = rs.getInt("TeacherID");
              String lala= String.valueOf(temp5);
              Message messageId = new Message(lala,rs.getString("TeacherName"),rs.getString("MessageText"));
-              list.add(messageId);
+             list.add(messageId);
            }
             return list;
        } catch (SQLException e) {
@@ -272,54 +254,31 @@ public class StudentDatabase extends Accounts{
         }
     }
         
-    public void  totalMarks(){
-//        int b1;
-//        int b2;
-//        int e1;
-//        int e2;
-//        int m;
-//        int s;
-//        int r;
-//        int bgs;
-//        int ic;
-//        
-//            b1=getBangla1st();
-//            b2= getBangla2nd();
-//            b2= getBangla2nd();
-//            e1 = getEnglish1st();
-//             e2=getEnglish2nd();
-//             m=getMath();
-//            r=getReligion();
-//             s=getScience();
-//
-//            ic=getIct();
-//            bgs=getBgs();
-//
-//        int gt=b1+b2+e1+e2+m+r+s+ic+bgs;
-//        setGrandTotal(gt);
-    }
-    public void getResult(String id){
-//        String sql = "select * from results where ID=" + "\'" +id+ "\'";
-//        
-//        try {
-//            pst = conn.prepareStatement(sql);
-//            rs = pst.executeQuery();
-//            if (rs.next()) {
-//               // rslt.setStudentId("ID");
-//                setBangla1st(rs.getInt("bangla1st"));
-//                setBangla2nd(rs.getInt("bangla2nd"));
-//                setEnglish1st(rs.getInt("english1st"));
-//                setEnglish2nd(rs.getInt("english2nd"));
-//                setMath(rs.getInt("math"));
-//                setReligion(rs.getInt("religion"));
-//                setScience(rs.getInt("science"));
-//                setBgs(rs.getInt("bgs"));
-//                setIct(rs.getInt("ict"));
-//                //Results messageId=new Results(rs.getString("ID"),rs.getString("bangla1st"),rs.getString("bangla2nd"),rs.getString("english1st"),rs.getString("english2nd"),rs.getString("math"),rs.getString("science"),rs.getString("religion"));
-//            }
-//        }catch(HeadlessException | SQLException e){
-//            JOptionPane.showMessageDialog(panel, "Database error","Warning",JOptionPane.WARNING_MESSAGE);
-//        }
+
+    public List<Results> getResult(){
+        
+        int len=id.length();
+        int index = id.indexOf(".");
+        String idString=id.substring(index+1, len);
+        int intID = Integer.parseInt(idString);
+        
+        String sql = "select * from Result where StudentID = " +intID+ ";";
+        List<Results> list2 = new ArrayList<Results>();
+        try{
+            rs=jConnection.getStatement().executeQuery(sql);
+            if (rs.next()) {
+               // rslt.setStudentId("ID");INSERT INTO Result(StudentID,bangla1st,bangla2nd,english1st,english2nd,math,science,religion)
+//VALUES (1,50,60,10,40,90,80,70);
+               
+                Results result=new Results(rs.getInt("StudentID"),rs.getInt("bangla1st"),rs.getInt("bangla2nd"),rs.getInt("english1st"),rs.getInt("english2nd"),rs.getInt("math"),rs.getInt("science"),rs.getInt("religion"),rs.getInt("bgs"),rs.getInt("ict"));
+                 list2.add(result);
+           }
+            return list2;
+        }catch(HeadlessException | SQLException e){
+            System.out.println(e);
+            JOptionPane.showMessageDialog(panel, "Database error","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        return null;
     }   
     public int updateStudentAccount(String name,String studentClass,String section,String Stu_Id,String phoneNo, String Email){
 //         final JPanel panel = new JPanel();

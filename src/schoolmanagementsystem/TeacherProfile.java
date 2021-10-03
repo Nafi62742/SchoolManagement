@@ -2165,7 +2165,8 @@ public class TeacherProfile extends javax.swing.JFrame {
             jTabbedPane1.show();
             //jTabbedPane2.show();
             sideMenu.setSize(242,720);//[418, 720]
-            Thread th = new Thread(){
+            Thread th;
+            th = new Thread(){
                 @Override
                 public void run(){
                     try{
@@ -2173,11 +2174,12 @@ public class TeacherProfile extends javax.swing.JFrame {
                             Thread.sleep(1);
                             sideMenu.setSize(i,720);
                         }
-                    }catch(Exception e){
+                    }catch(InterruptedException e){
                         jOptionPane.showMessegeDialog(null,e);
                     }
                 }
-            };th.start();
+            };
+th.start();
             x=242;
         }
     }//GEN-LAST:event_SideMenuShow1MouseClicked
@@ -2253,10 +2255,7 @@ public class TeacherProfile extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(null, "Marks can't be more than 100 or 50(for second paper) or paper wrong", "Warning", JOptionPane.WARNING_MESSAGE);
             marks.setText("");
-            
         }
-        
-
     }//GEN-LAST:event_resultSubmitButtonActionPerformed
 
     private void studentIdResultFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentIdResultFieldActionPerformed
@@ -2441,13 +2440,10 @@ public class TeacherProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_search_btnMousePressed
     
      public void showtable()throws SQLException{
-       String url = "jdbc:sqlserver://SWAP\\SQLEXPRESS:1433;databaseName=SchoolManagement";
+       String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
         
-        //String url ="jdbc:sqlserver://DESKTOP-4I9BNBL\SQLEXPRESS:1433;databaseName=TECHNOBOT";
-        //String user = "sa";
-        //String password = "salsabeel02";
         
         try{
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -2488,13 +2484,10 @@ public class TeacherProfile extends javax.swing.JFrame {
     
     
     public void searchtable()throws SQLException{
-       String url = "jdbc:sqlserver://SWAP\\SQLEXPRESS:1433;databaseName=SchoolManagement";
+       String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
         
-        //String url ="jdbc:sqlserver://DESKTOP-4I9BNBL\SQLEXPRESS:1433;databaseName=TECHNOBOT";
-        //String user = "sa";
-        //String password = "salsabeel02";
         
         try{
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -2537,13 +2530,10 @@ public class TeacherProfile extends javax.swing.JFrame {
     }
     
     public void searchtable1()throws SQLException{
-       String url = "jdbc:sqlserver://SWAP\\SQLEXPRESS:1433;databaseName=SchoolManagement";
+       String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
         
-        //String url ="jdbc:sqlserver://DESKTOP-4I9BNBL\SQLEXPRESS:1433;databaseName=TECHNOBOT";
-        //String user = "sa";
-        //String password = "salsabeel02";
         
         try{
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -2584,7 +2574,7 @@ public class TeacherProfile extends javax.swing.JFrame {
     }
     
     public void searchtable2()throws SQLException{
-       String url = "jdbc:sqlserver://SWAP\\SQLEXPRESS:1433;databaseName=SchoolManagement";
+       String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
         
@@ -2631,7 +2621,7 @@ public class TeacherProfile extends javax.swing.JFrame {
     }
     
     public void searchtable3()throws SQLException{
-       String url = "jdbc:sqlserver://SWAP\\SQLEXPRESS:1433;databaseName=SchoolManagement";
+       String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
         
@@ -2677,7 +2667,7 @@ public class TeacherProfile extends javax.swing.JFrame {
     }
     
     public void searchtable4()throws SQLException{
-       String url = "jdbc:sqlserver://SWAP\\SQLEXPRESS:1433;databaseName=SchoolManagement";
+       String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
         
