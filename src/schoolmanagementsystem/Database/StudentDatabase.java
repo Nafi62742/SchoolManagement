@@ -133,7 +133,7 @@ public class StudentDatabase extends Accounts{
 //        int intID = Integer.parseInt(idString);
     //String sql = "select * from Student where StudentID="  +intID+ ";";
     String sql = "select * from Student where Class ='' or Section='B';";
-        List<studentList> list = new ArrayList<studentList>();
+        List<studentList> list = new ArrayList<>();
        try {
            rs=jConnection.getStatement().executeQuery(sql);
            
@@ -198,7 +198,7 @@ public class StudentDatabase extends Accounts{
         
         String sql = "SELECT * FROM Message INNER JOIN Teacher ON Message.TeacherID = Teacher.TeacherID and Message.StudentID="+intID+";";
 //       
-        List<Message> list = new ArrayList<Message>();
+        List<Message> list = new ArrayList<>();
         try {
             rs = jConnection.getStatement().executeQuery(sql);
            while (rs.next()) {
@@ -215,21 +215,57 @@ public class StudentDatabase extends Accounts{
         return null;
     }
     public List<Attendance> getAttendance(String month){
-//        String sql = "select * from attendance where ID=" + "\'" +getId()+ "\' and month = \'"+ month+ "\'";
-//        List<Attendance> list = new ArrayList<Attendance>();
-//        try {
-////            pst = conn.prepareStatement(sql);
-////            rs = pst.executeQuery();
-//            while (rs.next()) {
-//                Attendance attend = new Attendance(rs.getString("month"),rs.getString("ID"),rs.getInt("working_days"), rs.getInt("present_days"));
-//                list.add(attend);
-//            }
-//            return list;
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, "Can't get attendance from database.");
-//        }
+        int monthNo=0;
+        if(month.equals("January")){
+            monthNo=1;
+        }
+        else if(month.equals("February")){
+            monthNo=2;
+        }
+        else if(month.equals("March")){
+            monthNo=3;
+        }
+         else if(month.equals("April")){
+            monthNo=4;
+        } else if(month.equals("May")){
+            monthNo=5;
+        } else if(month.equals("June")){
+            monthNo=6;
+        } else if(month.equals("July")){
+            monthNo=7;
+        } else if(month.equals("August")){
+            monthNo=8;
+        } else if(month.equals("September")){
+            monthNo=9;
+        }
+         else if(month.equals("October")){
+            monthNo=10;
+        }
+         else if(month.equals("November")){
+            monthNo=11;
+        }
+         else if(month.equals("December")){
+            monthNo=12;
+        }
+        int len=getId().length();
+        int index = getId().indexOf(".");
+        String idString=getId().substring(index+1, len);
+        int intID = Integer.parseInt(idString);
+//        System.out.println(intID);
+        String sql = "select * from Attendance where StudentID=" +intID+ " and MonthNo = "+monthNo+ ";";
+        List<Attendance> list = new ArrayList<>();
+        try {
+            rs = jConnection.getStatement().executeQuery(sql);
+            while (rs.next()) {
+                Attendance attend = new Attendance(rs.getString("MonthNo"),rs.getString("TeacherID"),rs.getString("StudentID"),rs.getInt("WorkingDays"), rs.getInt("PresentDays"));
+                list.add(attend);
+            }
+            return list;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Can't get attendance from database.");
+        }
         return null;
-//     
+     
     }
     
     
@@ -262,15 +298,14 @@ public class StudentDatabase extends Accounts{
         String idString=id.substring(index+1, len);
         int intID = Integer.parseInt(idString);
         
-        String sql = "select * from Result where StudentID = " +intID+ ";";
+        String sql = "select *,(bangla1st + bangla2nd+english1st+english2nd+math+science+religion+bgs+ict) as 'Total Marks' from Result where StudentID = " +intID+ ";";
         List<Results> list2 = new ArrayList<Results>();
         try{
             rs=jConnection.getStatement().executeQuery(sql);
             if (rs.next()) {
                // rslt.setStudentId("ID");INSERT INTO Result(StudentID,bangla1st,bangla2nd,english1st,english2nd,math,science,religion)
 //VALUES (1,50,60,10,40,90,80,70);
-               
-                Results result=new Results(rs.getInt("StudentID"),rs.getInt("bangla1st"),rs.getInt("bangla2nd"),rs.getInt("english1st"),rs.getInt("english2nd"),rs.getInt("math"),rs.getInt("science"),rs.getInt("religion"),rs.getInt("bgs"),rs.getInt("ict"));
+Results result=new Results(rs.getInt("StudentID"),rs.getInt("bangla1st"),rs.getInt("bangla2nd"),rs.getInt("english1st"),rs.getInt("english2nd"),rs.getInt("math"),rs.getInt("science"),rs.getInt("religion"),rs.getInt("bgs"),rs.getInt("ict"),rs.getInt("Total Marks"));
                  list2.add(result);
            }
             return list2;
@@ -282,11 +317,10 @@ public class StudentDatabase extends Accounts{
     }   
     public int updateStudentAccount(String name,String studentClass,String section,String Stu_Id,String phoneNo, String Email){
 //         final JPanel panel = new JPanel();
-        
-        int len=Stu_Id.length();
-        int index = id.indexOf(".");
-        String idString=id.substring(index+1, len);
+
+        String idString=id.substring(id.indexOf(".")+1, Stu_Id.length());
         int intID = Integer.parseInt(idString);
+        
         int classID = Integer.parseInt(studentClass);
 //        ,  Class=6
         String sql = "UPDATE Student "

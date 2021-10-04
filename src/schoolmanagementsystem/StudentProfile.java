@@ -75,7 +75,7 @@ public class StudentProfile extends javax.swing.JFrame {
         profileShow();
         resultShow();
 //      
-//        notifierButtonUse();
+        notifierButtonUse();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1744,7 +1744,12 @@ public class StudentProfile extends javax.swing.JFrame {
             row[1]=list.get(i).getTeacherID();
             row[2]=list.get(i).getNotice();
             row[3]=list.get(i).getTeacherName();
-            
+//            int notifier =checkDate(list.get(i).getDateString());
+//            if(notifier==1&&dateNotificationToggle!=1){
+//                dateNotificationToggle= 2;
+//                noticeNotificationCheck=1;
+//            }
+//            
             dtm.addRow(row);
         }
     }
@@ -1760,29 +1765,34 @@ public class StudentProfile extends javax.swing.JFrame {
            row2[0]=list.get(i).getTeacherId();
            //row2[0]=list.get(i).getTeacherName();
             row2[1]=list.get(i).getMessage();
-           
-           
+            
+//            int notifier =checkDate(list.get(i).getDateString());
+//            if(notifier==1){
+//                dateNotificationToggle= 3;
+//                messageNotificationCheck=1;
+//            }
+//           
            dtm2.addRow(row2);
            
        }
     }
     public void showAttendance(String Month) {
-//        List<Attendance> list = stdb.getAttendance(Month);
-//        int aD =0;
-//        if(list.size() == 0){
-//            JOptionPane.showMessageDialog(null, "Attendance not updated yet");
-//        }
-//        else{
-//            for (int i = 0; i < list.size(); i++) {
-//
-//                    aD = list.get(i).getWorkingDays() - list.get(i).getPresentDays();
-//                    absentDaysTextField.setText(Integer.toString(aD));
-//                    String wD = Integer.toString(list.get(i).getWorkingDays());
-//                    workingDayTextField.setText(wD);
-//                    String pD = Integer.toString(list.get(i).getPresentDays());
-//                    presentDaysTextField.setText(pD);
-//            }
-//        }
+        List<Attendance> list = stdb.getAttendance(Month);
+        int aD =0;
+        if(list.size() == 0){
+            JOptionPane.showMessageDialog(null, "Attendance not updated yet");
+        }
+        else{
+            for (int i = 0; i < list.size(); i++) {
+
+                    aD = list.get(i).getWorkingDays() - list.get(i).getPresentDays();
+                    absentDaysTextField.setText(Integer.toString(aD));
+                    String wD = Integer.toString(list.get(i).getWorkingDays());
+                    workingDayTextField.setText(wD);
+                    String pD = Integer.toString(list.get(i).getPresentDays());
+                    presentDaysTextField.setText(pD);
+            }
+        }
     }
     
     
@@ -1831,29 +1841,33 @@ public class StudentProfile extends javax.swing.JFrame {
     }
     
     public void resultComplements(int total){
-//            int finalMarks=stdb.getGrandTotal();
-//             String b1= Integer.toString(stdb.getBangla1st());
-//             String b2= Integer.toString(stdb.getBangla2nd());
-//             String e1 = Integer.toString(stdb.getEnglish1st());
-//             String e2=Integer.toString(stdb.getEnglish2nd());
-//             String m=Integer.toString(stdb.getMath());
-//             String r=Integer.toString(stdb.getReligion());
-//             String s=Integer.toString(stdb.getScience());
-//             String ic=Integer.toString(stdb.getIct());
-//             String bgs=Integer.toString(stdb.getBgs());
-//             int percentage=(finalMarks*100)/total;
-//               if(b1.equals("0") ||b2.equals("0")|| e1.equals("0") ||e2.equals("0") || m.equals("0") || r.equals("0") || s.equals("0") || ic.equals("0") || bgs.equals("0")){
-//                      complements.setText("");
-//               }
-//               else if(percentage<40){
-//                   complements.setText("You have failed");
-//               }
-//               else if(percentage>80){
-//                   complements.setText("Excelent");
-//               }
-//                else if(percentage>80){
-//                   complements.setText("Satisfactory");
-//               }
+           List<Results> list=stdb.getResult();
+            Object[] row=new Object[5];
+            for(int i=list.size()-1;i>=0;i--){
+//              System.out.println(list.get(i).getBangla1st()+1);
+                String b1= Integer.toString(list.get(i).getBangla1st());
+                String b2= Integer.toString(list.get(i).getBangla2nd());
+                String e1 = Integer.toString(list.get(i).getEnglish1st());
+                String e2=Integer.toString(list.get(i).getEnglish2nd());
+                String m=Integer.toString(list.get(i).getMath());
+                String r=Integer.toString(list.get(i).getReligion());
+                String s=Integer.toString(list.get(i).getScience());
+                String ic=Integer.toString(list.get(i).getIct());
+                String bgs=Integer.toString(list.get(i).getBgs());     
+                int percentage=(list.get(i).getTotalMarks()*100)/total;
+                if(b1.equals("0") ||b2.equals("0")|| e1.equals("0") ||e2.equals("0") || m.equals("0") || r.equals("0") || s.equals("0") || ic.equals("0") || bgs.equals("0")){
+                    complements.setText("");
+                }
+                else if(percentage<40){
+                    complements.setText("You have failed");
+                }
+                else if(percentage>80){
+                    complements.setText("Excelent");
+                }
+                else if(percentage>80){
+                   complements.setText("Satisfactory");
+                }
+            }
     }
     
     public void resultPageClear(){
@@ -1901,24 +1915,17 @@ public void resultShow(){
             List<Results> list=stdb.getResult();
             Object[] row=new Object[5];
             for(int i=list.size()-1;i>=0;i--){
-//                System.out.println(list.get(i).getBangla1st()+1);
+//              System.out.println(list.get(i).getBangla1st()+1);
                 String b1= Integer.toString(list.get(i).getBangla1st());
-//            row[1]=list.get(i).getTeacherID();
-//            row[2]=list.get(i).getNotice();
-//            row[3]=list.get(i).getTeacherName();
-            
-          
-        
-//            String finalMarks=Integer.toString(stdb.getGrandTotal());
-//            String b1= Integer.toString(stdb.getBangla1st());
-            String b2= Integer.toString(list.get(i).getBangla2nd());
-            String e1 = Integer.toString(list.get(i).getEnglish1st());
-            String e2=Integer.toString(list.get(i).getEnglish2nd());
-            String m=Integer.toString(list.get(i).getMath());
-            String r=Integer.toString(list.get(i).getReligion());
-            String s=Integer.toString(list.get(i).getScience());
-            String ic=Integer.toString(stdb.getIct());
-            String bgs=Integer.toString(stdb.getBgs());
+                String b2= Integer.toString(list.get(i).getBangla2nd());
+                String e1 = Integer.toString(list.get(i).getEnglish1st());
+                String e2=Integer.toString(list.get(i).getEnglish2nd());
+                String m=Integer.toString(list.get(i).getMath());
+                String r=Integer.toString(list.get(i).getReligion());
+                String s=Integer.toString(list.get(i).getScience());
+                String ic=Integer.toString(list.get(i).getIct());
+                String bgs=Integer.toString(list.get(i).getBgs());
+                String finalMarks=Integer.toString(list.get(i).getTotalMarks());
             int resultClass=Integer.parseInt(stdb.getStudentClass());
             if(b1.equals("0") &&b2.equals("0")&& e1.equals("0") && e2.equals("0") && m.equals("0") && r.equals("0") && s.equals("0") && ic.equals("0") && bgs.equals("0")){
                noResult.setText("No result published yet");
@@ -1981,8 +1988,16 @@ public void resultShow(){
                       else{
                          BGS.setText(bgs+"/100");
                       }
-//                      totalMarks.setText(finalMarks+"/800");
-//                       resultComplements(800);
+                      if(finalMarks.equals("0")){
+                         
+                          totalMarks.setText("Wait for other marks");
+                      }
+                      else{
+                          totalMarks.setText(finalMarks+"/800"); 
+                          resultComplements(800);
+                      }
+                      
+//                      
             }
             else if(resultClass>3&&resultClass<6){
                         if(b1.equals("0")){
@@ -2036,8 +2051,15 @@ public void resultShow(){
                       ColonLebel9.setText("");
                       ICTText.setText("");
                       ICT.setText("");
-//                      totalMarks.setText(finalMarks+"/600");
-//                      resultComplements(600);
+                      if(finalMarks.equals("0")){
+                         
+                          totalMarks.setText("Wait for other marks");
+                      }
+                      else{
+                          
+                          totalMarks.setText(finalMarks+"/600"); 
+                           resultComplements(600);
+                      }                  
            }
            else if(resultClass>0&&resultClass<4){
                       if(b1.equals("0")){
@@ -2077,8 +2099,15 @@ public void resultShow(){
                       BGS.setText("");
                       ColonLebel8.setText("");
                       ColonLebel9.setText("");
-//                      totalMarks.setText(finalMarks+"/500");
-//                      resultComplements(500);
+                      if(finalMarks.equals("0")){
+                         
+                          totalMarks.setText("Wait for other marks");
+                      }
+                      else{
+                          
+                          totalMarks.setText(finalMarks+"/500"); 
+                          resultComplements(500);
+                      } 
            }
            else{
                 
@@ -2086,11 +2115,8 @@ public void resultShow(){
         }
     }
         
-    
-    public void profileShow(){
-        
+    public void profileShow(){   
         String student_id =this.id;
-        
         String StudentName = stdb.getStudentName();
         String StudentPhnNo = stdb.getStudentPhoneNo();
         String Studentemail = stdb.getStudentEmail();
@@ -2310,11 +2336,11 @@ public void resultShow(){
     }//GEN-LAST:event_messege_btnMousePressed
 
     private void previousHomeworkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousHomeworkButtonActionPerformed
-        previousHomework();
+//        previousHomework();
     }//GEN-LAST:event_previousHomeworkButtonActionPerformed
 
     private void nextHomeworkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextHomeworkButtonActionPerformed
-        nextHomework();
+//        nextHomework();
     }//GEN-LAST:event_nextHomeworkButtonActionPerformed
 
     private void EditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditMouseClicked

@@ -13,6 +13,7 @@ public class Results {
     private int religion;
     private int bgs;
     private int ict;
+    private int totalMarks;
      public Results() {
           
     }
@@ -32,7 +33,7 @@ public class Results {
         this.religion = religion;
     }
 
-    public Results(int studentId, int bangla1st, int bangla2nd, int english1st, int english2nd, int math, int science, int religion, int bgs, int ict) {
+    public Results(int studentId, int bangla1st, int bangla2nd, int english1st, int english2nd, int math, int science, int religion, int bgs, int ict, int totalMarks) {
         this.studentId = studentId;
         this.bangla1st = bangla1st;
         this.bangla2nd = bangla2nd;
@@ -43,7 +44,11 @@ public class Results {
         this.religion = religion;
         this.bgs = bgs;
         this.ict = ict;
+        this.totalMarks = totalMarks;
     }
+
+  
+    
     public int getBgs() {
         return bgs;
     }
@@ -59,23 +64,14 @@ public class Results {
     public void setIct(int ict) {
         this.ict = ict;
     }
-   
-	
-   
- 
-    
-//    public Results(String studentId, String bangla1st,String bangla2nd, String english1st, String english2nd,String math ,String science,String religion) {
-//        
-//        this.studentId = studentId;
-//        this.bangla1st = bangla1st;
-//        this.bangla2nd = bangla2nd;
-//        this.english1st = english1st;
-//        this.english2nd = english2nd;
-//        this.math = math;
-//        this.science = science;
-//        this.religion = religion;
-//  
-//    }
+
+    public int getTotalMarks() {
+        return totalMarks;
+    }
+
+    public void setTotalMarks(int totalMarks) {
+        this.totalMarks = totalMarks;
+    }
 
     public int getStudentId() {
         return studentId;

@@ -145,22 +145,54 @@ public class TeacherDatabase extends Accounts{
     }
     
     public void attendanceUpdate(String month,String studentId, int workingDays, int presentDays){
-//        
-//        
-//        String sql = "INSERT INTO attendance(month, ID, working_days, present_days) VALUES(?,?,?,?)";
-//        try {
-//            pst = conn.prepareStatement(sql);
-//     
-//            pst.setString(1, month);
-//            pst.setString(2, studentId);
-//            pst.setInt(3,workingDays);
-//            pst.setInt(4,presentDays);
-//            pst.execute();
-//            
-//            JOptionPane.showMessageDialog(null, "Attendance have been updated Successfully");
-//        } catch (HeadlessException | SQLException e) {
-//            JOptionPane.showMessageDialog(panel, "Database error","Warning",JOptionPane.WARNING_MESSAGE);
-//        }
+        int monthNo=0;
+        if(month.equals("January")){
+            monthNo=1;
+        }
+        else if(month.equals("February")){
+            monthNo=2;
+        }
+        else if(month.equals("March")){
+            monthNo=3;
+        }
+         else if(month.equals("April")){
+            monthNo=4;
+        } else if(month.equals("May")){
+            monthNo=5;
+        } else if(month.equals("June")){
+            monthNo=6;
+        } else if(month.equals("July")){
+            monthNo=7;
+        } else if(month.equals("August")){
+            monthNo=8;
+        } else if(month.equals("September")){
+            monthNo=9;
+        }
+         else if(month.equals("October")){
+            monthNo=10;
+        }
+         else if(month.equals("November")){
+            monthNo=11;
+        }
+         else if(month.equals("December")){
+            monthNo=12;
+        }
+        String idString=studentId.substring(studentId.indexOf(".")+1, studentId.length());
+        int intID = Integer.parseInt(idString);
+        
+        String idString2=id.substring(id.indexOf(".")+1, id.length());
+        int intID2 = Integer.parseInt(idString2);
+        
+        String sql = "INSERT INTO Attendance(MonthNo,TeacherID,StudentID,WorkingDays,PresentDays) "
+                + "VALUES ("+monthNo+","+intID2+", "+intID+","+workingDays+","+presentDays+");";
+        try {
+             jConnection.getStatement().executeUpdate(sql); 
+            
+            JOptionPane.showMessageDialog(null, "Attendance have been updated Successfully");
+        } catch (SQLException e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(panel, "Database error","Warning",JOptionPane.WARNING_MESSAGE);
+        }
     }
     
         public void marksSend(int marks,String studentId,String paper){
