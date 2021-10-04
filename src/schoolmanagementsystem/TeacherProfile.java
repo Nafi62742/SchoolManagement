@@ -220,6 +220,8 @@ public class TeacherProfile extends javax.swing.JFrame {
         noticeTextArea = new javax.swing.JTextArea();
         jSeparator6 = new javax.swing.JSeparator();
         noticePostButton = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        datefield = new javax.swing.JTextField();
         resultPanel = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         resultOfID = new javax.swing.JLabel();
@@ -959,7 +961,6 @@ public class TeacherProfile extends javax.swing.JFrame {
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jTextField1.setText("Text");
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField1.setOpaque(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -1327,7 +1328,7 @@ public class TeacherProfile extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Select Class");
+        jLabel15.setText("Enter Date");
 
         studentClassComboBox.setBackground(new java.awt.Color(65, 59, 94));
         studentClassComboBox.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -1366,6 +1367,17 @@ public class TeacherProfile extends javax.swing.JFrame {
             }
         });
 
+        jLabel26.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("Select Class");
+
+        datefield.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        datefield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                datefieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout HomeworkPanel2Layout = new javax.swing.GroupLayout(HomeworkPanel2);
         HomeworkPanel2.setLayout(HomeworkPanel2Layout);
         HomeworkPanel2Layout.setHorizontalGroup(
@@ -1380,12 +1392,20 @@ public class TeacherProfile extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 953, Short.MAX_VALUE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(HomeworkPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(studentClassComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(186, 186, 186)
+                        .addComponent(studentClassComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(datefield, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator6))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(HomeworkPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(HomeworkPanel2Layout.createSequentialGroup()
+                    .addGap(39, 39, 39)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(822, Short.MAX_VALUE)))
         );
         HomeworkPanel2Layout.setVerticalGroup(
             HomeworkPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1397,14 +1417,20 @@ public class TeacherProfile extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(HomeworkPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(studentClassComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(studentClassComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(datefield, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addComponent(noticePostButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
+            .addGroup(HomeworkPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(HomeworkPanel2Layout.createSequentialGroup()
+                    .addGap(130, 130, 130)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(519, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout noticePanelLayout = new javax.swing.GroupLayout(noticePanel);
@@ -2070,7 +2096,8 @@ public class TeacherProfile extends javax.swing.JFrame {
     private void noticePostButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noticePostButtonActionPerformed
         String studentClass = (String) studentClassComboBox.getSelectedItem();
         String notice=noticeTextArea.getText();
-        teacherDb.postNotice(studentClass, notice);
+        String date = datefield.getText();
+        teacherDb.postNotice(date,studentClass, notice);
         noticeTextArea.setText("");
     }//GEN-LAST:event_noticePostButtonActionPerformed
    public void profileShowStudent(String stu_Id){
@@ -2810,6 +2837,10 @@ th.start();
         selectionCase = 0;
     }
     }//GEN-LAST:event_selectionActionPerformed
+
+    private void datefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datefieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_datefieldActionPerformed
     
     /**
      * @param args the command line arguments
@@ -2891,6 +2922,7 @@ th.start();
     private javax.swing.JButton attendanceUpdateButton;
     private javax.swing.JPanel attendance_btn;
     private com.toedter.calendar.JDateChooser dateChooser;
+    private javax.swing.JTextField datefield;
     private javax.swing.JLabel enter_id_label;
     private javax.swing.JLabel enter_id_label3;
     private javax.swing.JButton exitButton;
@@ -2924,6 +2956,7 @@ th.start();
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

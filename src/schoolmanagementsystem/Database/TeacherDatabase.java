@@ -82,11 +82,10 @@ public class TeacherDatabase extends Accounts{
 //        }
         
     }
-    public void postNotice(String studentClass,String notice){
-        Date datetime = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+    public void postNotice(String date,String studentClass,String notice){
+       
        // DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
-        String dateString=dateFormat.format(datetime);
+        String dateString=date;
       // String timeString=timeFormat.format(datetime);
         int len2=id.length();
         int index2 = id.indexOf(".");
@@ -101,7 +100,7 @@ public class TeacherDatabase extends Accounts{
         
         
        String sql = "INSERT INTO Notice(Datee,TeacherID,Class,Notice)"
-               +"VALUES("+dateString+","+intID2+","+intCls+",'"+notice+"');";
+               +"VALUES("+date+","+intID2+","+intCls+",'"+notice+"');";
        try {
             jConnection.getStatement().executeUpdate(sql);
             
