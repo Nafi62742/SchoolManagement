@@ -275,7 +275,7 @@ String sql= "select t.Teachername , i.homeworkNo, i.class, i.TeacherID , i.sec,i
                 setStudentName(rs.getString("StudentName"));
                 setStudentClass(rs.getString("Class"));
                 setSection(rs.getString("Section"));
-//                setStudentPhoneNo(rs.getString("StudentPhoneNo"));
+                setStudentPhoneNo(rs.getString("StudentPhoneNo"));
                 setStudentEmail(rs.getString("StudentEmail"));
                 setPassFromDB(rs.getString("StudentPassword"));
             }
@@ -319,7 +319,7 @@ Results result=new Results(rs.getInt("StudentID"),rs.getInt("bangla1st"),rs.getI
         int classID = Integer.parseInt(studentClass);
 
         String sql = "UPDATE Student "
-                + "SET StudentName ='"+name+"' , StudentEmail='"+ Email+"',Class= "+classID+",Section='"+section+"'"
+                + "SET StudentName ='"+name+"' , StudentEmail='"+ Email+"',Class= "+classID+",Section='"+section+"',StudentPhoneNo='"+phoneNo+"'"
                 + "where StudentID= " + intID +";";
             try {
                 jConnection.getStatement().executeUpdate(sql);

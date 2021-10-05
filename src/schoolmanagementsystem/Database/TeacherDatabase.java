@@ -53,7 +53,7 @@ public class TeacherDatabase extends Accounts{
                 setTeacherName(rs.getString("TeacherName"));
                 setTeacherSubject(rs.getString("SubjectName"));
                 setDesignation(rs.getString("Designation"));
-//                setTeacherPhoneNo(rs.getString("phoneNo"));
+                setTeacherPhoneNo(rs.getString("TeacherPhoneNo"));
                 setTeacherEmail(rs.getString("TeacherEmail"));
                 setPassFromTDB(rs.getString("TeacherPassword"));
             }
@@ -178,9 +178,6 @@ public class TeacherDatabase extends Accounts{
        String sql = "INSERT INTO Message(StudentID,TeacherID,MessageText) "
                + "VALUES ("+intID+","+intID2+",'"+message+"');";
       
-              
-               // 
-               
         try {
             jConnection.getStatement().executeUpdate(sql);
     
@@ -307,7 +304,7 @@ public class TeacherDatabase extends Accounts{
         String idString=id.substring(index+1, len);
         int intID = Integer.parseInt(idString);
           String sql = "UPDATE Teacher "
-                + "SET TeacherName ='"+name+"' , TeacherEmail='"+ Email+"',Designation='"+designation+"' ,SubjectName='"+subject+"'"
+                + "SET TeacherName ='"+name+"' , TeacherEmail='"+ Email+"',Designation='"+designation+"' ,SubjectName='"+subject+"',TeacherPhoneNo='"+PhoneNo+"'"
                 + "where TeacherID= " + intID +";";
           try {
               jConnection.getStatement().executeUpdate(sql);

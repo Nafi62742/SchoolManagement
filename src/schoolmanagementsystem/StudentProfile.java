@@ -208,7 +208,7 @@ public class StudentProfile extends javax.swing.JFrame {
         TopBarLayout.setHorizontalGroup(
             TopBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TopBarLayout.createSequentialGroup()
-                .addGap(0, 590, Short.MAX_VALUE)
+                .addGap(0, 1250, Short.MAX_VALUE)
                 .addComponent(close_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         TopBarLayout.setVerticalGroup(
@@ -218,7 +218,7 @@ public class StudentProfile extends javax.swing.JFrame {
                 .addComponent(close_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(TopBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 620, 30));
+        jPanel1.add(TopBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 30));
 
         sideMenu.setBackground(new java.awt.Color(19, 10, 52));
 
@@ -1364,7 +1364,7 @@ public class StudentProfile extends javax.swing.JFrame {
                                         .addGroup(resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resultPanelLayout.createSequentialGroup()
                                                 .addComponent(b1st)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                                                 .addComponent(ColonLebel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resultPanelLayout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -1378,7 +1378,6 @@ public class StudentProfile extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)))
                         .addGap(12, 12, 12)
                         .addGroup(resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(totalMarks, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(resultPanelLayout.createSequentialGroup()
                                 .addComponent(religion, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(135, 135, 135)
@@ -1406,22 +1405,23 @@ public class StudentProfile extends javax.swing.JFrame {
                                     .addGroup(resultPanelLayout.createSequentialGroup()
                                         .addComponent(ColonLebel9, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(bangla2nd, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(bangla2nd, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(totalMarks, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(resultPanelLayout.createSequentialGroup()
                         .addGap(311, 311, 311)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(resultPanelLayout.createSequentialGroup()
                         .addGap(179, 179, 179)
                         .addComponent(noResult, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         resultPanelLayout.setVerticalGroup(
             resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(resultPanelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(noResult, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addComponent(noResult, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                 .addGap(20, 20, 20)
                 .addGroup(resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(resultPanelLayout.createSequentialGroup()
@@ -1576,8 +1576,6 @@ public class StudentProfile extends javax.swing.JFrame {
             showHomework();
     }
      public void showHomework(){
-
-
       DefaultTableModel dtm2 = (DefaultTableModel) homeworkTable.getModel();
 
        List<Homework> list=stdb.getHomework();
@@ -1588,7 +1586,7 @@ public class StudentProfile extends javax.swing.JFrame {
           row2[2]=list.get(i).getHomeworkText();
           row2[3]=list.get(i).getTotalMarks();
           row2[1]=list.get(i).getTeacherName();
-            dtm2.addRow(row2);
+          dtm2.addRow(row2);
        }
  }
    
@@ -1604,6 +1602,7 @@ public class StudentProfile extends javax.swing.JFrame {
             row[1]=list.get(i).getTeacherID();
             row[3]=list.get(i).getNotice();
             row[2]=list.get(i).getTeacherName();
+            
 //            int notifier =checkDate(list.get(i).getDateString());
 //            if(notifier==1&&dateNotificationToggle!=1){
 //                dateNotificationToggle= 2;
@@ -1750,7 +1749,7 @@ public class StudentProfile extends javax.swing.JFrame {
 
 public void resultShow(){
         
-//            String student_id =this.id;
+            String Nomarks ="Marks Not Given Yet";
             List<Results> list=stdb.getResult();
             Object[] row=new Object[5];
             for(int i=list.size()-1;i>=0;i--){
@@ -1772,57 +1771,57 @@ public void resultShow(){
             }
             else if(resultClass>5&&resultClass<11){
                       if(b1 .equals("0")){
-                          bangla1st.setText("-/100");
+                          bangla1st.setText(Nomarks);
                       }
                       else{
                           bangla1st.setText(b1+"/100");
                       }
                       if(b2.equals("0")){
-                         bangla2nd.setText("-/50");
+                         bangla2nd.setText(Nomarks);
                       }
                       else{
                           bangla2nd.setText(b2+"/50");
                       }
                        if(e1 .equals("0")){
-                          english1st.setText("-/100");
+                          english1st.setText(Nomarks);
                       }
                       else{
                          english1st.setText(e1+"/100");
                       }
                         if(e2 .equals("0")){
-                         english2nd.setText("-/50");
+                         english2nd.setText(Nomarks);
                       }
                       else{
                           english2nd.setText(e2+"/50");
                       }
                        if(m .equals("0")){
-                          math.setText("-/100");
+                          math.setText(Nomarks);
                       }
                       else{
                          math.setText(m+"/100");
                       }
 
                       if(r.equals("0")){
-                          religion.setText("-/100");
+                          religion.setText(Nomarks);
                       }
                       else{
                          religion.setText(r+"/100");
                       }
                       if(s.equals("0")){
-                          science.setText("-/100");
+                          science.setText(Nomarks);
                       }
                       else{
                          science.setText(s+"/100");
                       }
 
                       if(ic.equals("0")){
-                          ICT.setText("-/100");
+                          ICT.setText(Nomarks);
                       }
                       else{
                          ICT.setText(ic+"/100");
                       }
                       if(bgs.equals("0")){
-                          BGS.setText("-/100");
+                          BGS.setText(Nomarks);
                       }
                       else{
                          BGS.setText(bgs+"/100");
@@ -1839,28 +1838,28 @@ public void resultShow(){
 //                      
             }
             else if(resultClass>3&&resultClass<6){
-                        if(b1.equals("0")){
-                          bangla1st.setText("-/100");
+                      if(b1.equals("0")){
+                          bangla1st.setText(Nomarks);
                       }
                       else{
                           bangla1st.setText(b1);
                       }
                       if(b2.equals("0")){
-                         bangla2nd.setText("");
+                         bangla2nd.setText(Nomarks);
                          bangla2ndText.setText("");
                          b1st.setText("");
                       }
                       else{
                           bangla2nd.setText(b2);
                       }
-                       if(e1.equals("0")){
-                          english1st.setText("");
+                      if(e1.equals("0")){
+                          english1st.setText(Nomarks);
                       }
                       else{
                          english1st.setText(e1);
                       }
-                        if(e2.equals("0")){
-                         english2nd.setText("");
+                      if(e2.equals("0")){
+                         english2nd.setText(Nomarks);
                          English2ndText.setText("");
                          e1st.setText("");
                       }
@@ -1868,20 +1867,26 @@ public void resultShow(){
                           bangla2nd.setText(e2+"/100");
                       }
                        if(m.equals("0")){
-                          math.setText("");
+                          math.setText(Nomarks);
                       }
                       else{
                          math.setText(m+"/100");
                       }
+                      if(r.equals("0")){
+                          science.setText(Nomarks);
+                      }
+                      else{
+                         science.setText(r);
+                      }
 
                       if(r.equals("0")){
-                          religion.setText("");
+                          religion.setText(Nomarks);
                       }
                       else{
                          religion.setText(r);
                       }
                       if(bgs.equals("0")){
-                          BGS.setText("");
+                          BGS.setText(Nomarks);
                       }
                       else{
                          BGS.setText(r);
@@ -1902,7 +1907,7 @@ public void resultShow(){
            }
            else if(resultClass>0&&resultClass<4){
                       if(b1.equals("0")){
-                          bangla1st.setText("-/100");
+                          bangla1st.setText(Nomarks);
                       }
                       else{
                           bangla1st.setText(b1);
@@ -1911,7 +1916,7 @@ public void resultShow(){
                     bangla2ndText.setText("");
                     b1st.setText("");
                        if(e1.equals("0")){
-                          english1st.setText("");
+                          english1st.setText(Nomarks);
                       }
                       else{
                          english1st.setText(e1);
@@ -1920,14 +1925,20 @@ public void resultShow(){
                     English2ndText.setText("");
                     e1st.setText("");
                        if(m.equals("0")){
-                          math.setText("");
+                          math.setText(Nomarks);
                       }
                       else{
                          math.setText(m+"/100");
                       }
+                      if(r.equals("0")){
+                          science.setText(Nomarks);
+                      }
+                      else{
+                         science.setText(r);
+                      }
 
                       if(r.equals("0")){
-                          religion.setText("");
+                          religion.setText(Nomarks);
                       }
                       else{
                          religion.setText(r);

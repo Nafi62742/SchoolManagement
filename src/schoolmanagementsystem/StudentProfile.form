@@ -53,7 +53,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="660" y="0" width="620" height="30"/>
+              <AbsoluteConstraints x="0" y="0" width="1280" height="30"/>
             </Constraint>
           </Constraints>
 
@@ -61,7 +61,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="590" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="1250" max="32767" attributes="0"/>
                       <Component id="close_btn" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1781,7 +1781,7 @@
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Group type="102" alignment="1" attributes="0">
                                                           <Component id="b1st" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace pref="49" max="32767" attributes="0"/>
+                                                          <EmptySpace pref="50" max="32767" attributes="0"/>
                                                           <Component id="ColonLebel" min="-2" pref="18" max="-2" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" alignment="1" attributes="0">
@@ -1803,7 +1803,6 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="totalMarks" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="religion" min="-2" pref="157" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
@@ -1840,6 +1839,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
+                                      <Component id="totalMarks" alignment="0" min="-2" pref="447" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -1851,7 +1851,7 @@
                                   <Component id="noResult" min="-2" pref="545" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="77" max="32767" attributes="0"/>
+                          <EmptySpace pref="78" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1859,9 +1859,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="jLabel12" pref="50" max="32767" attributes="0"/>
+                          <Component id="jLabel12" pref="47" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="noResult" pref="49" max="32767" attributes="0"/>
+                          <Component id="noResult" pref="45" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
