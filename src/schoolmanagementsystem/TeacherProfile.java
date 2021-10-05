@@ -280,7 +280,7 @@ public class TeacherProfile extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(1244, Short.MAX_VALUE)
+                .addContainerGap(1238, Short.MAX_VALUE)
                 .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1317,9 +1317,9 @@ public class TeacherProfile extends javax.swing.JFrame {
             .addGap(0, 1035, Short.MAX_VALUE)
             .addGroup(AttendencePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(AttendencePanelLayout.createSequentialGroup()
-                    .addGap(0, 5, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(AttendencePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 6, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         AttendencePanelLayout.setVerticalGroup(
             AttendencePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2408,7 +2408,7 @@ th.start();
     }//GEN-LAST:event_search_btnMousePressed
     
      public void showtable()throws SQLException{
-       String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
+       String url = "jdbc:sqlserver://SWAP\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
         
@@ -2450,7 +2450,7 @@ th.start();
     
     
     public void searchtable()throws SQLException{
-       String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
+       String url = "jdbc:sqlserver://SWAP\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
         
@@ -2494,7 +2494,7 @@ th.start();
     }
     
     public void searchtable1()throws SQLException{
-       String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
+       String url = "jdbc:sqlserver://SWAP\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
              
@@ -2533,7 +2533,7 @@ th.start();
     }
     
     public void searchtable2()throws SQLException{
-       String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
+       String url = "jdbc:sqlserver://SWAP\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
    
@@ -2571,7 +2571,7 @@ th.start();
     }
     
     public void searchtable3()throws SQLException{
-       String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
+       String url = "jdbc:sqlserver://SWAP\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
         
@@ -2615,7 +2615,7 @@ th.start();
     }
     
     public void searchtable4()throws SQLException{
-       String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
+       String url = "jdbc:sqlserver://SWAP\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
         
