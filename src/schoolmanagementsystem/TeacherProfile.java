@@ -209,7 +209,6 @@ public class TeacherProfile extends javax.swing.JFrame {
         noticePanel = new javax.swing.JPanel();
         HomeworkPanel2 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         studentClassComboBox = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -217,7 +216,6 @@ public class TeacherProfile extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         noticePostButton = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
-        datefield = new javax.swing.JTextField();
         resultPanel = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         resultOfID = new javax.swing.JLabel();
@@ -1341,10 +1339,6 @@ public class TeacherProfile extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Notice");
 
-        jLabel15.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Enter Date");
-
         studentClassComboBox.setBackground(new java.awt.Color(65, 59, 94));
         studentClassComboBox.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         studentClassComboBox.setForeground(new java.awt.Color(255, 255, 255));
@@ -1386,13 +1380,6 @@ public class TeacherProfile extends javax.swing.JFrame {
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Select Class");
 
-        datefield.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        datefield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                datefieldActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout HomeworkPanel2Layout = new javax.swing.GroupLayout(HomeworkPanel2);
         HomeworkPanel2.setLayout(HomeworkPanel2Layout);
         HomeworkPanel2Layout.setHorizontalGroup(
@@ -1408,11 +1395,7 @@ public class TeacherProfile extends javax.swing.JFrame {
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(HomeworkPanel2Layout.createSequentialGroup()
                         .addGap(186, 186, 186)
-                        .addComponent(studentClassComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(datefield, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(studentClassComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator6))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1429,18 +1412,15 @@ public class TeacherProfile extends javax.swing.JFrame {
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addGroup(HomeworkPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(studentClassComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(datefield, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addComponent(studentClassComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addComponent(noticePostButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
             .addGroup(HomeworkPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(HomeworkPanel2Layout.createSequentialGroup()
                     .addGap(130, 130, 130)
@@ -2124,8 +2104,7 @@ public class TeacherProfile extends javax.swing.JFrame {
     private void noticePostButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noticePostButtonActionPerformed
         String studentClass = (String) studentClassComboBox.getSelectedItem();
         String notice=noticeTextArea.getText();
-        String date = datefield.getText();
-        teacherDb.postNotice(date,studentClass, notice);
+        teacherDb.postNotice(studentClass, notice);
         noticeTextArea.setText("");
     }//GEN-LAST:event_noticePostButtonActionPerformed
    public void profileShowStudent(String stu_Id){
@@ -2760,10 +2739,6 @@ th.start();
     }
     }//GEN-LAST:event_selectionActionPerformed
 
-    private void datefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datefieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_datefieldActionPerformed
-
     private void attendanceDeleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendanceDeleteBTNActionPerformed
         // TODO add your handling code here:
         String month = (String) selectMonth.getSelectedItem();
@@ -2861,7 +2836,6 @@ th.start();
     private javax.swing.JButton attendanceUpdateButton;
     private javax.swing.JPanel attendance_btn;
     private com.toedter.calendar.JDateChooser dateChooser;
-    private javax.swing.JTextField datefield;
     private javax.swing.JLabel enter_id_label;
     private javax.swing.JLabel enter_id_label3;
     private javax.swing.JButton exitButton;
@@ -2883,7 +2857,6 @@ th.start();
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;

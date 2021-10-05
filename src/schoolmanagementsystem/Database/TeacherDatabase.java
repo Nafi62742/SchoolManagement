@@ -6,10 +6,17 @@ import java.awt.HeadlessException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import schoolmanagementsystem.TeacherProfile;
 
 public class TeacherDatabase extends Accounts{
     private String teacherName;
@@ -114,11 +121,7 @@ public class TeacherDatabase extends Accounts{
             System.out.println(e);
         }
     }
-    public void postNotice(String date,String studentClass,String notice){
-       
-       // DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
-        String dateString=date;
-      // String timeString=timeFormat.format(datetime);
+    public void postNotice(String studentClass,String notice){
         int len2=id.length();
         int index2 = id.indexOf(".");
         String idString2=id.substring(index2+1, len2);
@@ -128,21 +131,36 @@ public class TeacherDatabase extends Accounts{
         int index = studentClass.indexOf(".");
         String idString=studentClass.substring(index+1, len);
         int intCls = Integer.parseInt(idString);
-        
-        
-        
-       String sql = "INSERT INTO Notice(Datee,TeacherID,Class,Notice)"
-               +"VALUES("+date+","+intID2+","+intCls+",'"+notice+"');";
-       try {
-            jConnection.getStatement().executeUpdate(sql);
-            
-            
+       // DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
+       
+        Date datePost=java.util.Calendar.getInstance().getTime();
 
-            JOptionPane.showMessageDialog(null, "Notice have been posted Successfully");
-       } catch (HeadlessException | SQLException e) {
-           System.out.println(e);
-           JOptionPane.showMessageDialog(panel, "Database error","Warning",JOptionPane.WARNING_MESSAGE);
-       }
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String dueDateString=dateFormat.format(datePost);
+
+        DateFormat targetFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date;
+        String formatDate;
+        try {
+            date = dateFormat.parse(dueDateString);
+            formatDate = targetFormat.format(date);
+            System.out.println(formatDate);
+                String sql = "INSERT INTO Notice(Datee,TeacherID,Class,Notice)"
+                        +"VALUES('"+formatDate+"',"+intID2+","+intCls+",'"+notice+"');";
+                try {
+                     jConnection.getStatement().executeUpdate(sql);
+
+
+
+                     JOptionPane.showMessageDialog(null, "Notice have been posted Successfully");
+                } catch (HeadlessException | SQLException e) {
+                    System.out.println(e);
+                    JOptionPane.showMessageDialog(panel, "Database error","Warning",JOptionPane.WARNING_MESSAGE);
+                }
+        } catch (ParseException ex) {
+            Logger.getLogger(TeacherProfile.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
+        } 
     } 
     
     public void sendMessage(String message,String studentId){

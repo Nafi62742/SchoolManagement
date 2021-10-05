@@ -208,7 +208,7 @@ public class StudentProfile extends javax.swing.JFrame {
         TopBarLayout.setHorizontalGroup(
             TopBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TopBarLayout.createSequentialGroup()
-                .addGap(0, 1250, Short.MAX_VALUE)
+                .addGap(0, 590, Short.MAX_VALUE)
                 .addComponent(close_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         TopBarLayout.setVerticalGroup(
@@ -218,7 +218,7 @@ public class StudentProfile extends javax.swing.JFrame {
                 .addComponent(close_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(TopBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 30));
+        jPanel1.add(TopBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 620, 30));
 
         sideMenu.setBackground(new java.awt.Color(19, 10, 52));
 
@@ -1115,8 +1115,8 @@ public class StudentProfile extends javax.swing.JFrame {
         noticeBoardTable.setRowHeight(30);
         jScrollPane1.setViewportView(noticeBoardTable);
         if (noticeBoardTable.getColumnModel().getColumnCount() > 0) {
-            noticeBoardTable.getColumnModel().getColumn(0).setMinWidth(100);
-            noticeBoardTable.getColumnModel().getColumn(0).setMaxWidth(100);
+            noticeBoardTable.getColumnModel().getColumn(0).setMinWidth(150);
+            noticeBoardTable.getColumnModel().getColumn(0).setMaxWidth(150);
             noticeBoardTable.getColumnModel().getColumn(1).setMinWidth(150);
             noticeBoardTable.getColumnModel().getColumn(1).setMaxWidth(250);
         }
