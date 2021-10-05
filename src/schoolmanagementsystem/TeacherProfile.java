@@ -1,8 +1,4 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
+
 package schoolmanagementsystem;
 
 import java.awt.Color;
@@ -14,7 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,10 +25,7 @@ import schoolmanagementsystem.Database.StudentDatabase;
 import schoolmanagementsystem.Database.TeacherDatabase;
 import schoolmanagementsystem.Database.studentList;
 
-/**
- *
- * @author Nafi
- */
+
 public class TeacherProfile extends javax.swing.JFrame {
     
     /**
@@ -210,6 +205,7 @@ public class TeacherProfile extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         attendanceUpdateButton = new javax.swing.JButton();
+        attendanceDeleteBTN = new javax.swing.JButton();
         noticePanel = new javax.swing.JPanel();
         HomeworkPanel2 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -286,7 +282,7 @@ public class TeacherProfile extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(498, Short.MAX_VALUE)
+                .addContainerGap(1244, Short.MAX_VALUE)
                 .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -297,7 +293,7 @@ public class TeacherProfile extends javax.swing.JFrame {
                 .addGap(0, 2, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 540, 32));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 32));
 
         sideMenu.setBackground(new java.awt.Color(19, 10, 52));
 
@@ -1229,6 +1225,17 @@ public class TeacherProfile extends javax.swing.JFrame {
             }
         });
 
+        attendanceDeleteBTN.setBackground(new java.awt.Color(19, 10, 52));
+        attendanceDeleteBTN.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
+        attendanceDeleteBTN.setForeground(new java.awt.Color(255, 255, 255));
+        attendanceDeleteBTN.setText("Delete");
+        attendanceDeleteBTN.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        attendanceDeleteBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attendanceDeleteBTNActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout AttendencePanel1Layout = new javax.swing.GroupLayout(AttendencePanel1);
         AttendencePanel1.setLayout(AttendencePanel1Layout);
         AttendencePanel1Layout.setHorizontalGroup(
@@ -1247,7 +1254,9 @@ public class TeacherProfile extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AttendencePanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                                .addComponent(studentIdTextFieldA, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(AttendencePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(attendanceUpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(studentIdTextFieldA, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(AttendencePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(AttendencePanel1Layout.createSequentialGroup()
                                 .addGap(64, 64, 64)
@@ -1264,8 +1273,8 @@ public class TeacherProfile extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(AttendencePanel1Layout.createSequentialGroup()
-                .addGap(380, 380, 380)
-                .addComponent(attendanceUpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(608, 608, 608)
+                .addComponent(attendanceDeleteBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         AttendencePanel1Layout.setVerticalGroup(
@@ -1273,28 +1282,34 @@ public class TeacherProfile extends javax.swing.JFrame {
             .addGroup(AttendencePanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addGroup(AttendencePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(workingDayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(AttendencePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AttendencePanel1Layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
+                        .addGap(44, 44, 44)
                         .addGroup(AttendencePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(AttendencePanel1Layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
+                            .addComponent(selectMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(workingDayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(AttendencePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(AttendencePanel1Layout.createSequentialGroup()
-                                .addComponent(studentIdTextFieldA, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                                .addGap(6, 6, 6))
-                            .addComponent(presentDaysTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(111, 111, 111)
-                .addComponent(attendanceUpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(116, 116, 116))
+                                .addGap(123, 123, 123)
+                                .addGroup(AttendencePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(AttendencePanel1Layout.createSequentialGroup()
+                                .addGap(109, 109, 109)
+                                .addGroup(AttendencePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(AttendencePanel1Layout.createSequentialGroup()
+                                        .addComponent(studentIdTextFieldA, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                                        .addGap(6, 6, 6))
+                                    .addComponent(presentDaysTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(291, 291, 291))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AttendencePanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(AttendencePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(attendanceDeleteBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(attendanceUpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80))))
         );
 
         javax.swing.GroupLayout AttendencePanelLayout = new javax.swing.GroupLayout(AttendencePanel);
@@ -1304,9 +1319,9 @@ public class TeacherProfile extends javax.swing.JFrame {
             .addGap(0, 1035, Short.MAX_VALUE)
             .addGroup(AttendencePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(AttendencePanelLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 5, Short.MAX_VALUE)
                     .addComponent(AttendencePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 6, Short.MAX_VALUE)))
         );
         AttendencePanelLayout.setVerticalGroup(
             AttendencePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2082,15 +2097,28 @@ public class TeacherProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void homeworkPostButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeworkPostButtonActionPerformed
+        
         String studentClass=(String) selectClass.getSelectedItem();
         String section=(String) selectSection.getSelectedItem();
         int total_marks=Integer.parseInt(totalMarks.getText());
-        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String dueDateString=dateFormat.format(dateChooser.getDate());
-        String homework=homeworkTextArea.getText();
-        teacherDb.postHomework(studentClass,section,total_marks,dueDateString,homework);
-        totalMarks.setText("");
-        homeworkTextArea.setText("");
+
+        DateFormat targetFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date;
+        String formatDate;
+        try {
+            date = dateFormat.parse(dueDateString);
+            formatDate = targetFormat.format(date);
+            System.out.println(formatDate);
+            String homework=homeworkTextArea.getText();
+            teacherDb.postHomework(studentClass,section,total_marks,formatDate,homework);
+            totalMarks.setText("");
+            homeworkTextArea.setText("");
+        } catch (ParseException ex) {
+            Logger.getLogger(TeacherProfile.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_homeworkPostButtonActionPerformed
 
     private void noticePostButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noticePostButtonActionPerformed
@@ -2107,83 +2135,17 @@ public class TeacherProfile extends javax.swing.JFrame {
 //        
        stdb=new StudentDatabase(stu_Id);
        String student_id =stdb.getId();
-//        
-//        String StudentName = stdb.getStudentName();
-//        String StudentPhnNo = stdb.getStudentPhoneNo();
-//        String Studentemail = stdb.getStudentEmail();
-//       // NameFDB.setText(StudentName);
         List<studentList> list=stdb.getStudentList();
         DefaultTableModel dtm = (DefaultTableModel) studentListTable.getModel();
         for(int i=list.size()-1;i>=0;i--){
         Object[] row=new Object[5];
-        row[3]=list.get(i).getStudentName();
         row[1]=list.get(i).getStudentClass();
         row[2]=list.get(i).getStudentPhoneNo();
+        row[3]=list.get(i).getStudentName();
         row[4]=list.get(i).getStudentEmail();
         row[3]=list.get(i).getSection();
         dtm.addRow(row);
-        
         }
-//        
-//        
-//      //  ID1.setText(student_id);
-//      //  Section.setText(stdb.getSection());
-//        //Class.setText(stdb.getStudentClass());
-//       
-//        if(StudentPhnNo == null){
-//            phoneNo1.setText("Phone not given yet");
-//        }
-//        else{
-//            phoneNo1.setText(StudentPhnNo);
-//        }
-//         if(Studentemail == null){
-//            Email1.setText("Email not given yet");
-//        }
-//        else{
-//            Email1.setText(Studentemail);
-//        }
-//         
-//         
-//         //        DefaultTableModel dtm = (DefaultTableModel) studentListTable.getModel();
-////        
-////        List<Notice> list=stdb.getNotice();
-////        Object[] row=new Object[5];
-////        for(int i=list.size()-1;i>=0;i--){
-////            row[0]=list.get(i).getDateString();
-////            int notifier =checkDate(list.get(i).getDateString());
-////            if(notifier==1&&dateNotificationToggle!=1){
-////                dateNotificationToggle= 2;
-////                noticeNotificationCheck=1;
-////            }
-////            row[1]=list.get(i).getTimeString();
-////            row[2]=list.get(i).getTeacherName();
-////            row[3]=list.get(i).getSubject();
-////            row[4]=list.get(i).getNotice();
-////            dtm.addRow(row);
-////        }
-//         
-//    }
-    
-    
- //      public void showStudentList(){
-        
-  //        DefaultTableModel dtm = (DefaultTableModel) studentListTable.getModel();
-       
-  //      List<studentList> list=stdb.getStudentList();
-//        Object[] row=new Object[5];
-//        for(int i=list.size()-1;i>=0;i--){
-//            row[0]=list.get(i).getDateString();
-//            int notifier =checkDate(list.get(i).getDateString());
-//            if(notifier==1&&dateNotificationToggle!=1){
-//                dateNotificationToggle= 2;
-//                noticeNotificationCheck=1;
-//            }
-//            row[1]=list.get(i).getTimeString();
-//            row[2]=list.get(i).getTeacherName();
-//            row[3]=list.get(i).getSubject();
-//            row[4]=list.get(i).getNotice();
-//            dtm.addRow(row);
-//        }
    }
     private void SideMenuShow1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SideMenuShow1MouseClicked
         if(x == 0)
@@ -2483,8 +2445,7 @@ th.start();
             
             Statement st = conn.createStatement();
            
-       
-            
+
             ResultSet rs = st.executeQuery(sql);
             
             while(rs.next()){
@@ -2494,8 +2455,7 @@ th.start();
                 String sclass = rs.getString("Class");
                 String ssection = rs.getString("Section");
              
-               
-                
+
                 String tbdata[] = {sid,sname,semail,sclass,ssection};
                 
                 DefaultTableModel apt =  (DefaultTableModel) studentListTable.getModel();
@@ -2523,9 +2483,7 @@ th.start();
             
             studentListTable.setModel(new DefaultTableModel(null, new String [] {"ID", "Name", "Email", "Class", "Section"}));
             
-            //String sql = "Select * From PRODUCTS";
-            
-            //Statement st = conn.createStatement();
+
             PreparedStatement pst = conn.prepareStatement("SELECT StudentID,StudentName,StudentEmail,Class,Section FROM Student WHERE StudentID LIKE ? OR StudentName LIKE ? OR Class LIKE ? OR Section LIKE ?");
             pst.setString(1, srch);
             pst.setString(2, srch);
@@ -2560,18 +2518,13 @@ th.start();
        String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
-        
-        
+             
         try{
             Connection conn = DriverManager.getConnection(url, user, password);
             
             String srch = "%"+jTextField2.getText()+"%";
             
             studentListTable.setModel(new DefaultTableModel(null, new String [] {"ID", "Name", "Email", "Class", "Section"}));
-            
-            //String sql = "Select * From PRODUCTS";
-            
-            //Statement st = conn.createStatement();
             PreparedStatement pst = conn.prepareStatement("SELECT StudentID,StudentName,StudentEmail,Class,Section FROM Student WHERE StudentID LIKE ?");
             pst.setString(1, srch);
          
@@ -2604,11 +2557,7 @@ th.start();
        String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
-        
-        //String url ="jdbc:sqlserver://DESKTOP-4I9BNBL\SQLEXPRESS:1433;databaseName=TECHNOBOT";
-        //String user = "sa";
-        //String password = "salsabeel02";
-        
+   
         try{
             Connection conn = DriverManager.getConnection(url, user, password);
             
@@ -2616,14 +2565,11 @@ th.start();
             
             studentListTable.setModel(new DefaultTableModel(null, new String [] {"ID", "Name", "Email", "Class", "Section"}));
             
-            //String sql = "Select * From PRODUCTS";
-            
-            //Statement st = conn.createStatement();
+
             PreparedStatement pst = conn.prepareStatement("SELECT StudentID,StudentName,StudentEmail,Class,Section FROM Student WHERE StudentName LIKE ?");
             pst.setString(1, srch);
             
-       
-            
+  
             ResultSet rs = pst.executeQuery();
             
             while(rs.next()){
@@ -2632,9 +2578,7 @@ th.start();
                 String semail = rs.getString("StudentEmail");
                 String sclass = rs.getString("Class");
                 String ssection = rs.getString("Section");
-             
-               
-                
+
                 String tbdata[] = {sid,sname,semail,sclass,ssection};
                 
                 DefaultTableModel apt =  (DefaultTableModel) studentListTable.getModel();
@@ -2652,9 +2596,7 @@ th.start();
        String user = "sa";
        String password = "Ghum1234";
         
-        //String url ="jdbc:sqlserver://DESKTOP-4I9BNBL\SQLEXPRESS:1433;databaseName=TECHNOBOT";
-        //String user = "sa";
-        //String password = "salsabeel02";
+ 
         
         try{
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -2697,10 +2639,6 @@ th.start();
        String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=SchoolManagement";
        String user = "sa";
        String password = "Ghum1234";
-        
-        //String url ="jdbc:sqlserver://DESKTOP-4I9BNBL\SQLEXPRESS:1433;databaseName=TECHNOBOT";
-        //String user = "sa";
-        //String password = "salsabeel02";
         
         try{
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -2756,15 +2694,7 @@ th.start();
     }//GEN-LAST:event_searchT_btn1ActionPerformed
 
     private void searchT_btn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchT_btn2MouseClicked
-        // TODO add your handling code here:
-        //String Class= jTextFieldClass.getText();
-      // String Section = jTextFieldSection.getText();
-       //String StudentID =  jTextField2.getText();
-   //    String StudentName = jTextFieldName.getText();
-       
-       //StudentDatabase stu = new StudentDatabase();
-      // stu.stuList(Class, Section, StudentID, StudentName);
-      
+
       
       if(selectionCase == 1)
       {
@@ -2808,15 +2738,7 @@ th.start();
     }//GEN-LAST:event_searchT_btn2MouseClicked
 
     private void searchT_btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchT_btn2ActionPerformed
-        // TODO add your handling code here:
-      // profileShowStudent(jTextField2.getText());
-     //  String Class= jTextFieldClass.getText();
-     //  String Section = jTextFieldSection.getText();
-      // String StudentID =  jTextField2.getText();
-   //    String StudentName = jTextFieldName.getText();
-       
-      // StudentDatabase stu = new StudentDatabase();
-    //   stu.stuList(Class, Section, StudentID, StudentName);
+
   
     }//GEN-LAST:event_searchT_btn2ActionPerformed
 
@@ -2841,6 +2763,22 @@ th.start();
     private void datefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datefieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_datefieldActionPerformed
+
+    private void attendanceDeleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendanceDeleteBTNActionPerformed
+        // TODO add your handling code here:
+        String month = (String) selectMonth.getSelectedItem();
+        String studentId = studentIdTextFieldA.getText();
+
+        if(!month.equals(null)&&!studentId.equals(null))
+        teacherDb.attendanceDelete(month, studentId);
+
+        else {
+            JOptionPane.showMessageDialog(null, "Enter valid number", "Warning", JOptionPane.WARNING_MESSAGE);
+            studentIdTextFieldA.setText("");
+            presentDaysTextField.setText("");
+
+        }
+    }//GEN-LAST:event_attendanceDeleteBTNActionPerformed
     
     /**
      * @param args the command line arguments
@@ -2919,6 +2857,7 @@ th.start();
     private javax.swing.JLabel SideMenuShow1;
     private javax.swing.JLabel Subject;
     private javax.swing.JLabel SubjectText;
+    private javax.swing.JButton attendanceDeleteBTN;
     private javax.swing.JButton attendanceUpdateButton;
     private javax.swing.JPanel attendance_btn;
     private com.toedter.calendar.JDateChooser dateChooser;

@@ -6,37 +6,26 @@
 package schoolmanagementsystem;
 
 //import schoolmanagementsystem.Database.JConnection;
-import java.awt.HeadlessException;
+
 import java.awt.event.KeyEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-import net.codejava.sql.JConnection;
 import org.apache.commons.codec.binary.Base64;
-import schoolmanagementsystem.Database.StudentDatabase;
 import schoolmanagementsystem.Database.TeacherDatabase;
 
 public class UpdateAccountTeacher extends javax.swing.JFrame {
-//    Connection conn = null;
-//    PreparedStatement pst = null;
+
     private String id;
     TeacherDatabase teacherDb;
     
     public UpdateAccountTeacher() {
         this.setUndecorated(true);
         initComponents();
-//        conn = JConnection.connectdb();
-//        teacherDb=new TeacherDatabase(this.id);
     }
     
     public UpdateAccountTeacher(String id) {
         this.setUndecorated(true);
         initComponents();
-//        conn = JConnection.connectdb();
         this.id = id;
         teacherDb=new TeacherDatabase(this.id);
         profileShow();
@@ -344,7 +333,6 @@ public class UpdateAccountTeacher extends javax.swing.JFrame {
              switch (response) {
                   case 1:
                       JOptionPane.showMessageDialog(null, "Updated Successfully");
-                      //clearTextField();
                       new TeacherProfile(this.id).setVisible(true);
                       dispose();
                       break;

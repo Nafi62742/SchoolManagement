@@ -5,10 +5,7 @@
  */
 package schoolmanagementsystem.Database;
 
-/**
- *
- * @author Administrator
- */
+
 public class Attendance {
     
     private String monthName;

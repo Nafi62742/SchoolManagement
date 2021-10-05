@@ -6,15 +6,10 @@ import java.awt.HeadlessException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import schoolmanagementsystem.StudentProfile;
 
 public class TeacherDatabase extends Accounts{
     private String teacherName;
@@ -34,7 +29,6 @@ public class TeacherDatabase extends Accounts{
     //Constructor (Polymorphism - Method Overloading)
     public TeacherDatabase(String id) {
         this.id = id;
-//        conn=JConnection.connectdb();
         int len=id.length();
         int index = id.indexOf(".");
         String idString=id.substring(index+1, len);
@@ -60,27 +54,65 @@ public class TeacherDatabase extends Accounts{
             JOptionPane.showMessageDialog(panel, "Database error","Warning",JOptionPane.WARNING_MESSAGE);
         }
     }
-    public void postHomework(String studentClass,String section,int totalMarks,String dueDate,String homeworkText){
-//        Date datetime = new Date();
-//        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-//        String postDateString=dateFormat.format(datetime);
-//        String sql = "INSERT INTO homework(class, sec,teacher_name, subject, total_marks,post_date, due_date,homework_text) VALUES(?,?,?,?,?,?,?,?)";
-//        try {
-//            pst = conn.prepareStatement(sql);
-//            pst.setString(1, studentClass);
-//            pst.setString(2, section);
-//            pst.setString(3, getTeacherName());
-//            pst.setString(4, getTeacherSubject());
-//            pst.setInt(5, totalMarks);
-//            pst.setString(6,postDateString);
-//            pst.setString(7, dueDate);
-//            pst.setString(8,homeworkText);
-//            pst.execute();
-//            JOptionPane.showMessageDialog(null, "Homework have been posted Successfully");
-//        } catch (HeadlessException | SQLException e) {
-//            JOptionPane.showMessageDialog(panel, e,"Warning",JOptionPane.WARNING_MESSAGE);
-//        }
+       public void attendanceDelete(String month,String studentId){
+        int monthNo=0;
+        if(month.equals("January")){
+            monthNo=1;
+        }
+        else if(month.equals("February")){
+            monthNo=2;
+        }
+        else if(month.equals("March")){
+            monthNo=3;
+        }
+         else if(month.equals("April")){
+            monthNo=4;
+        } else if(month.equals("May")){
+            monthNo=5;
+        } else if(month.equals("June")){
+            monthNo=6;
+        } else if(month.equals("July")){
+            monthNo=7;
+        } else if(month.equals("August")){
+            monthNo=8;
+        } else if(month.equals("September")){
+            monthNo=9;
+        }
+         else if(month.equals("October")){
+            monthNo=10;
+        }
+         else if(month.equals("November")){
+            monthNo=11;
+        }
+        else if(month.equals("December")){
+            monthNo=12;
+        }
+        String idString=studentId.substring(studentId.indexOf(".")+1, studentId.length());
+        int intID = Integer.parseInt(idString);
         
+        String sql = "Delete from Attendance where StudentID= "+intID+ " and MonthNo= "+monthNo+ ";";
+        try {
+             jConnection.getStatement().executeUpdate(sql); 
+            
+            JOptionPane.showMessageDialog(null, "Attendance has been Deleted Successfully");
+        } catch (SQLException e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(panel, "Database error","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    public void postHomework(String studentClass,String section,int total_marks,String dueDate,String homeworkText){
+
+        int len2=id.length();
+        int index2 = id.indexOf(".");
+        String idString2=id.substring(index2+1, len2);
+        int intID2 = Integer.parseInt(idString2);
+          String sqlHW = "INSERT INTO homework(TeacherID,class,sec,totalMark,dueDate,work) values('"+intID2+"','"+studentClass+"','"+section+"','"+total_marks+"','"+dueDate+"','"+homeworkText+"');";
+        try {
+        jConnection.getStatement().executeUpdate(sqlHW);
+       }catch(SQLException e){
+           e.printStackTrace();
+            System.out.println(e);
+        }
     }
     public void postNotice(String date,String studentClass,String notice){
        
@@ -250,13 +282,12 @@ public class TeacherDatabase extends Accounts{
         }
     }
   public int updateTeacherAccount(String name,String subject,String designation,String Teacher_Id,String PhoneNo, String Email){
-//        final JPanel panel = new JPanel();
+        final JPanel panel = new JPanel();
         
         int len=Teacher_Id.length();
         int index = id.indexOf(".");
         String idString=id.substring(index+1, len);
         int intID = Integer.parseInt(idString);
-//        int classID = Integer.parseInt(studentClass);
           String sql = "UPDATE Teacher "
                 + "SET TeacherName ='"+name+"' , TeacherEmail='"+ Email+"',Designation='"+designation+"' ,SubjectName='"+subject+"'"
                 + "where TeacherID= " + intID +";";
@@ -270,19 +301,12 @@ public class TeacherDatabase extends Accounts{
                 return 0;
             }
         
-    }
-    
-  
-  
-
-  
+    }    
     
     public void setTeacherName(String teacherName) {
         this.teacherName = teacherName;
     }
-    
-    
-    
+ 
     public void setDesignation(String designation) {
         this.designation = designation;
     }

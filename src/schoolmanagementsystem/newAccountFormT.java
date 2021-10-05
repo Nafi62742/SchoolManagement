@@ -4,16 +4,10 @@
 * and open the template in the editor.
 */
 package schoolmanagementsystem;
-
-import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
-import org.apache.commons.codec.binary.Base64;
 import schoolmanagementsystem.Database.Accounts;
 
 public class newAccountFormT extends javax.swing.JFrame {

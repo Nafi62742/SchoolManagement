@@ -149,17 +149,7 @@ public class IntroPage extends javax.swing.JFrame {
             };th.start();
             y=0;
         }
-        
-       // logInPage LP = new logInPage();
-       // LP.setVisible(true);
 
-       // LP.setResizable(false);
-
-        
-       // LP.setDefaultCloseOperation(LP.DO_NOTHING_ON_CLOSE);
-
-        //dispose();
-        
     }
 //...................End Custom Functions....................//
     

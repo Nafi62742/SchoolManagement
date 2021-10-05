@@ -5,10 +5,7 @@
  */
 package schoolmanagementsystem.Database;
 
-/**
- *
- * @author Administrator
- */
+
 public class studentList {
     
     private String studentName;
@@ -77,6 +74,4 @@ public class studentList {
         this.section = section;
     }
 
-    
-    
 }

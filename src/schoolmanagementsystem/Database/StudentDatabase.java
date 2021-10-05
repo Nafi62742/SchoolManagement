@@ -6,10 +6,7 @@
 package schoolmanagementsystem.Database;
 
 import java.awt.HeadlessException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,12 +20,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import schoolmanagementsystem.logInPage;
 
-/**
- *
- * @author fahim
- */
+
 public class StudentDatabase extends Accounts{
     private String studentName;
     private String studentClass;
@@ -127,11 +120,6 @@ public class StudentDatabase extends Accounts{
     
      public List<studentList> getStudentList(){
         
-//         int len=getId().length();
-//        int index = id.indexOf(".");
-//        String idString=id.substring(index+1, len);
-//        int intID = Integer.parseInt(idString);
-    //String sql = "select * from Student where StudentID="  +intID+ ";";
     String sql = "select * from Student where Class ='' or Section='B';";
         List<studentList> list = new ArrayList<>();
        try {
@@ -148,46 +136,53 @@ public class StudentDatabase extends Accounts{
         }
       return null;
   }
-//    String sql = "select StudentID from " + table + " "
-//                +"where StudentID=" + number + " and StudentPassword= '" + encryptedPass + "';";
-//     String sql2="SELECT ID from LoginInfo "
-//                                + "where ID='" + id + "' and IpAddress='" + myIP.getHostAddress() + "';";
-//                        rs=jConnection.getStatement().executeQuery(sql2);
-//    
-    
-    public List<Homework> getHomework(){
-//        DateFormat dateFormat = new SimpleDateFormat("dd");
-//        DateFormat monthFormat = new SimpleDateFormat("MMMMM");
-//        DateFormat yearFormat = new SimpleDateFormat("yyyy");
-//        String sql = "select * from homework where class=\'"+getStudentClass()+ "\' and sec=\'"+getSection()+"\'";
-//        List<Homework> list = new ArrayList<Homework>();
-//        Date today=new Date();
-//        String dateString=dateFormat.format(today);
-//        String monthString=monthFormat.format(today);
-//        String yearString=yearFormat.format(today);
+
+   public List<Homework> getHomework(){
+
+
+        int len=getStudentClass().length();
+        int index = getStudentClass().indexOf(".");
+        String idString=getStudentClass().substring(index+1, len);
+        int intCls = Integer.parseInt(idString);
+String sql= "select t.Teachername , i.homeworkNo, i.class, i.TeacherID , i.sec,i.totalMark, i.dueDate,i.work from Teacher t join homework i on t.TeacherID=i.TeacherID where i.class="+intCls+" order by totalMark";
+
+        List<Homework> list = new ArrayList<Homework>();
+        Date today=new Date();
+
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String dueDateString=dateFormat.format(today);
+
+        DateFormat targetFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date;
+        String formatDate;
+
 //        String dueDateString,dueMonthString,dueYearString;
-//        try {
-////            pst = conn.prepareStatement(sql);
-////            rs = pst.executeQuery();
-//            while (rs.next()) {
-//                Date dueDate=new SimpleDateFormat("dd.MM.yyyy").parse(rs.getString("due_date"));
-//                dueDateString=dateFormat.format(dueDate);
+        try {
+            rs=jConnection.getStatement().executeQuery(sql);
+            while (rs.next()) {
+            String dueDate=rs.getString("dueDate");
 //                dueMonthString=monthFormat.format(dueDate);
 //                dueYearString=yearFormat.format(dueDate);
-//                if(today.compareTo(dueDate) <0||(dateString.equals(dueDateString)&&monthString.equals(dueMonthString)&&yearString.equals(dueYearString))){
-//                    Homework homeworkClass=new Homework(rs.getString("subject"),rs.getInt("total_marks"),rs.getString("post_date"),rs.getString("due_date"),rs.getString("homework_text"));
-//                    list.add(homeworkClass);
-//                }
-//            }
-//            return list;
-//        }catch(ParseException e){
-//            JOptionPane.showMessageDialog(null, "Can't Parse Date.");
-//        }
-//        catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, "Can't get homeworks from database.");
-//        }
-        return null;
-    }
+
+                date = dateFormat.parse(dueDateString);
+                formatDate = targetFormat.format(date);
+
+                if(formatDate.compareTo(dueDate) <0||formatDate.equals(dueDate)){
+                    Homework homeworkClass=new Homework(rs.getInt("Class"),rs.getString("sec"),rs.getInt("totalMark"),rs.getString("dueDate"),rs.getString("work") ,rs.getInt("TeacherID"),rs.getString("Teachername"));
+                    list.add(homeworkClass);
+                }
+            }
+            return list;
+        }catch(ParseException e){
+            JOptionPane.showMessageDialog(null, "Can't Parse Date.");
+            System.out.println(e);
+        }
+        catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Can't get homeworks from database.");
+            System.out.println(e);
+        }
+      return null;
+   }
     
     public List<Message> getMessage(){
         
@@ -280,7 +275,7 @@ public class StudentDatabase extends Accounts{
                 setStudentName(rs.getString("StudentName"));
                 setStudentClass(rs.getString("Class"));
                 setSection(rs.getString("Section"));
-                setStudentPhoneNo(rs.getString("StudentAddress"));
+//                setStudentPhoneNo(rs.getString("StudentPhoneNo"));
                 setStudentEmail(rs.getString("StudentEmail"));
                 setPassFromDB(rs.getString("StudentPassword"));
             }
@@ -316,13 +311,13 @@ Results result=new Results(rs.getInt("StudentID"),rs.getInt("bangla1st"),rs.getI
         return null;
     }   
     public int updateStudentAccount(String name,String studentClass,String section,String Stu_Id,String phoneNo, String Email){
-//         final JPanel panel = new JPanel();
+         final JPanel panel = new JPanel();
 
         String idString=id.substring(id.indexOf(".")+1, Stu_Id.length());
         int intID = Integer.parseInt(idString);
         
         int classID = Integer.parseInt(studentClass);
-//        ,  Class=6
+
         String sql = "UPDATE Student "
                 + "SET StudentName ='"+name+"' , StudentEmail='"+ Email+"',Class= "+classID+",Section='"+section+"'"
                 + "where StudentID= " + intID +";";

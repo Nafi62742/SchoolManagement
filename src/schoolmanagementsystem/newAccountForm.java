@@ -7,11 +7,7 @@ package schoolmanagementsystem;
 
 
 import java.awt.event.KeyEvent;
-//import schoolmanagementsystem.Database.JConnection;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
-import net.codejava.sql.JConnection;
 import schoolmanagementsystem.Database.Accounts;
 
 public class newAccountForm extends javax.swing.JFrame {
@@ -296,7 +292,6 @@ public class newAccountForm extends javax.swing.JFrame {
     private void signupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupButtonActionPerformed
         String originalPass = passwordField.getText();
         if (originalPass.length() >= 4 && originalPass.equals(confirmPasswordField.getText())) {
-            account.createResultfieldForStu("100."+idField.getText());
             int response=account.createStudentAccount(nameField.getText(),studentClassField.getText(),sectionField.getText(),"100."+idField.getText(),originalPass);
             switch (response) {
 
@@ -370,7 +365,7 @@ public class newAccountForm extends javax.swing.JFrame {
         int length=sec.length();
         
         char c = evt.getKeyChar();
-        if(c>='A'&&c<='Z'){
+        if((c>='a'&& c<='z')||(c>='A'&& c<='C')){
             if(length<1){
                 sectionField.setEditable(true);
             }

@@ -10,7 +10,7 @@ public class JConnection {
     Statement statement;
 
     public JConnection() {
-    String url = "jdbc:sqlserver://SWAP\\SQLEXPRESS:1433;databaseName=";
+    String url = "jdbc:sqlserver://DESKTOP-55L7EUL\\SQLEXPRESS:1433;databaseName=";
     String dbName="SchoolManagement";
     String user = "sa";
     String password = "Ghum1234";
@@ -28,22 +28,4 @@ public class JConnection {
         return statement;
  }
 
-
-//    public static Connection connectdb() {
-//        String url="jdbc:mysql://localhost/";
-//        String dbName="school_management_system";
-//        String username="root";
-//        String pass="";
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            Connection connection = DriverManager.getConnection(url+dbName, username, pass);
-//            return connection;
-//        } catch (ClassNotFoundException | SQLException sqle) {
-//            JOptionPane.showMessageDialog(null, "Connection failed");
-//            return null;
-//        }
-//
-//    }
-
-   
 }
